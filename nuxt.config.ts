@@ -4,9 +4,16 @@ import process from 'node:process'
 
 const deploymentEnv = process.env
 
+const cloudflareSiteUrl = deploymentEnv.CF_PAGES_BRANCH === 'main'
+  ? deploymentEnv.CF_PAGES_URL?.replace(
+      /^https:\/\/[^.]+\.([^.]+\.pages\.dev)\/?$/,
+      'https://$1',
+    )
+  : deploymentEnv.CF_PAGES_URL
+
 const siteUrl = (
   deploymentEnv.NUXT_PUBLIC_SITE_URL
-  || deploymentEnv.CF_PAGES_URL
+  || cloudflareSiteUrl
   || 'https://heng-yau-enterprise.developer47122.chatgpt.site'
 ).replace(/\/+$/, '')
 

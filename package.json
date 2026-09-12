@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "build:cloudflare": "node scripts/clean-cloudflare-output.mjs && nuxt generate",
+    "build:cloudflare": "node scripts/clean-cloudflare-output.mjs && nuxt generate && node scripts/finalize-cloudflare-output.mjs",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",

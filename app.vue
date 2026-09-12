@@ -271,12 +271,12 @@ const copy = {
         { no: '03', title: '塑龙', text: '手工塑出龙首龙鳞', icon: Brush },
         { no: '04', title: '阴干', text: '耐心检查再出厂', icon: Wind },
       ],
-      imageAlt: '开放式工坊中正在制作的长型龙香',
+      imageAlt: '兴耀工坊师傅以双手把彩色龙鳞塑在大型龙香上',
     },
     story: {
-      label: '品牌标志 · 兴耀企业',
-      title: '兴耀企业，\n一眼认出我们的龙香。',
-      body: '新版标志延续原来流线龙与香烟的轮廓，以红金线条写出「香」的神韵。主品牌始终是兴耀企业。',
+      label: '三十余年传承 · 兴耀企业',
+      title: '三十余年，\n让龙香手艺继续传下去。',
+      body: '兴耀企业扎根 Kampung Chuah 三十余年，专注手工龙香与庙庆用香。从调香、成柱、塑龙到彩绘，每一道工序都靠多年累积的经验、手感与耐心完成。新版标志延续流线龙与香烟的轮廓，也象征我们把这门传统手艺认真传下去。',
       quote: '龙随烟起，香承心意。',
       markAlt: '兴耀企业新版龙香标志',
     },
@@ -548,12 +548,12 @@ const copy = {
         { no: '03', title: 'Sculpt', text: 'Shape the dragon by hand', icon: Brush },
         { no: '04', title: 'Dry', text: 'Rest, inspect and finish', icon: Wind },
       ],
-      imageAlt: 'Long dragon incense poles being made in an open workshop',
+      imageAlt: 'Heng Yau artisan hands sculpting colourful dragon scales onto monumental incense',
     },
     story: {
-      label: 'THE MARK OF HENG YAU',
-      title: 'Heng Yau Enterprise,\nrecognised by our dragon.',
-      body: 'Our renewed mark keeps the flowing dragon and rising smoke of the original. Rendered in red and gold, it carries the spirit of incense while Heng Yau Enterprise remains the main name.',
+      label: 'OVER 30 YEARS OF CRAFT · HENG YAU',
+      title: '30+ years,\ncarrying the craft forward.',
+      body: 'For more than 30 years, Heng Yau Enterprise has been rooted in Kampung Chuah, specialising in handmade dragon incense and ceremonial incense. From blending and forming to sculpting and painting, every stage depends on experience, practised hands and patience. Our renewed mark carries forward the flowing dragon and rising smoke, symbolising our commitment to continue this traditional craft.',
       quote: 'The dragon follows the smoke; incense carries the heart.',
       markAlt: 'Heng Yau Enterprise dragon incense logo',
     },
@@ -698,7 +698,19 @@ const stepPhoto = (direction: -1 | 1) => {
 const openProduct = (index: number) => {
   selectedProductIndex.value = index
   nextTick(() => {
-    if (!catalogDialog.value?.open) catalogDialog.value?.showModal()
+    const dialog = catalogDialog.value
+    if (!dialog) return
+
+    if (!dialog.open) dialog.showModal()
+
+    // Both containers can become the scroll surface at different breakpoints.
+    // Reset them after the dialog enters the top layer so every product opens
+    // from its title/image instead of keeping the previous product's position.
+    requestAnimationFrame(() => {
+      dialog.scrollTop = 0
+      dialog.querySelector<HTMLElement>('.catalog-detail')?.scrollTo({ top: 0, left: 0 })
+      dialog.querySelector<HTMLElement>('.catalog-detail-body')?.scrollTo({ top: 0, left: 0 })
+    })
   })
 }
 
@@ -818,7 +830,7 @@ const seo = computed(() => {
       title: currentView.value === 'catalog'
         ? 'Incense Catalogue | Heng Yau Enterprise'
         : 'Heng Yau Enterprise | Handmade Dragon Incense Malaysia',
-      description: 'Heng Yau Enterprise makes custom 8 ft to 24 ft dragon incense, peach incense, Da Er Bo Ye incense, ceremonial water-feature incense and wholesale everyday incense in Kampung Chuah, Port Dickson, Malaysia.',
+      description: 'For more than 30 years, Heng Yau Enterprise in Kampung Chuah, Port Dickson has made custom 8 ft to 24 ft dragon incense, peach incense, Da Er Bo Ye incense, ceremonial water-feature incense and wholesale everyday incense.',
       keywords: 'Heng Yau Enterprise, dragon incense Malaysia, small incense wholesale, joss sticks wholesale, spiral incense, peach incense, Da Er Bo Ye incense, 21 ft dragon incense, 24 ft dragon incense, Port Dickson, Kampung Chuah, 龙香, 小香批发, 桃香, 大二伯爷香, 兴耀企业',
       imageAlt: 'Heng Yau Enterprise monumental dragon incense illuminated for a temple celebration',
     }
@@ -828,7 +840,7 @@ const seo = computed(() => {
     title: currentView.value === 'catalog'
       ? '香品目录｜兴耀企业龙香与寺庙用香'
       : '兴耀企业｜马来西亚龙香、庙庆与寺庙用香',
-    description: '兴耀企业位于森美兰 Port Dickson Kampung Chuah，制作可订制的 8 尺至 24 尺龙香、桃香、大二伯爷香与龙凤喷水香，并供应小香、线香、盘香及常用庙用香品批发。',
+    description: '兴耀企业扎根森美兰 Port Dickson Kampung Chuah 三十余年，制作可订制的 8 尺至 24 尺龙香、桃香、大二伯爷香与龙凤喷水香，并供应常用庙用香品。',
     keywords: '兴耀企业, 龙香, 桃香, 大二伯爷香, 龙凤喷水香, 小香批发, 线香, 盘香, 21尺龙香, 22尺龙香, 24尺龙香, 马来西亚龙香, Kampung Chuah, Port Dickson, Heng Yau Enterprise',
     imageAlt: '兴耀企业为庙宇庆典制作并点亮的高身龙香',
   }
@@ -845,7 +857,7 @@ const structuredData = computed(() => ({
       url: siteUrl,
       logo: `${siteUrl}/images/heng-yau-logo-transparent-v6.webp`,
       image: `${siteUrl}/images/facebook-led-dragon-night-v14.webp`,
-      description: '马来西亚传统龙香、桃香、大二伯爷香、龙凤喷水香制作企业，并供应小香、线香、盘香及常用寺庙用香批发。',
+      description: '扎根马来西亚 Kampung Chuah 三十余年的传统龙香制作企业，制作龙香、桃香、大二伯爷香与龙凤喷水香，并供应常用寺庙用香。',
       telephone: '+60 16-363 3329',
       email: 'sainem38@gmail.com',
       address: {
@@ -1172,7 +1184,7 @@ useHead(() => ({
       </section>
 
       <section id="craft" class="craft-section">
-        <img class="craft-backdrop" src="/images/facebook-dragon-workshop-v14.webp" :alt="t.craft.imageAlt" loading="lazy">
+        <img class="craft-backdrop" src="/images/heng-yau-craft-hands-v28.webp" :alt="t.craft.imageAlt" loading="lazy">
         <div class="craft-overlay" />
         <div class="container craft-layout">
           <div class="craft-copy" data-reveal>

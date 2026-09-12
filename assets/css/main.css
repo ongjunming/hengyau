@@ -2267,7 +2267,9 @@ h2 {
   }
 
   .logo-showcase {
+    width: 100%;
     max-width: 530px;
+    margin-inline: auto;
   }
 
   .contact-layout {
@@ -4458,6 +4460,9 @@ h2 {
 }
 
 .catalog-dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
   width: min(1120px, calc(100% - 36px));
   max-height: 90dvh;
   border-radius: 14px;

@@ -19,7 +19,6 @@ const preventIndexing = isPreviewDeployment
 
 export default defineNuxtConfig({
   compatibilityDate: '2026-09-10',
-  buildDir: deploymentEnv.CF_PAGES === '1' ? '.nuxt-cloudflare' : undefined,
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
   app: {

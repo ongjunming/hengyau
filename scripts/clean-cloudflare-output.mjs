@@ -6,6 +6,7 @@ const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const outputDirectories = [
   resolve(projectRoot, 'dist'),
   resolve(projectRoot, '.output'),
+  resolve(projectRoot, '.nuxt'),
   resolve(projectRoot, '.nuxt-cloudflare'),
 ]
 

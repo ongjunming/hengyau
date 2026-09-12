@@ -1,5 +1,4 @@
 .nuxt
-.nuxt-cloudflare
 .output
 /dist
 node_modules

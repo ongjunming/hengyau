@@ -35,7 +35,22 @@ export default defineNuxtConfig({
         { name: 'theme-color', content: '#241815' },
         { name: 'color-scheme', content: 'light' },
       ],
-      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+      link: [
+        {
+          rel: 'icon',
+          type: 'image/webp',
+          href: '/images/heng-yau-logo-transparent-v6.webp?v=7',
+        },
+        {
+          rel: 'shortcut icon',
+          type: 'image/webp',
+          href: '/images/heng-yau-logo-transparent-v6.webp?v=7',
+        },
+        {
+          rel: 'apple-touch-icon',
+          href: '/images/heng-yau-logo-transparent-v6.webp?v=7',
+        },
+      ],
     },
   },
   runtimeConfig: {

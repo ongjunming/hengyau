@@ -37,8 +37,11 @@ const pendingHomeSection = ref<string | null>(null)
 const catalogDialog = ref<HTMLDialogElement | null>(null)
 const photoDialog = ref<HTMLDialogElement | null>(null)
 const albumTrack = ref<HTMLElement | null>(null)
+const albumActiveIndex = ref(0)
 const runtimeConfig = useRuntimeConfig()
 let revealObserver: IntersectionObserver | null = null
+let albumScrollFrame: number | null = null
+const albumImagePreloads = new Map<string, HTMLImageElement>()
 
 const facebookUrl = 'https://www.facebook.com/profile.php?id=100043191953658'
 const emailUrl = 'mailto:sainem38@gmail.com'
@@ -48,12 +51,12 @@ const robotsDirective = runtimeConfig.public.preventIndexing
   ? 'noindex, nofollow, noarchive'
   : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
 const facebookPhotos = [
-  { image: '/images/album-temple-clouds-v16.webp' },
-  { image: '/images/facebook-dragon-workshop-v14.webp' },
-  { image: '/images/facebook-dragon-row-close-v15.webp' },
-  { image: '/images/album-ceremony-field-v16.webp' },
-  { image: '/images/album-led-row-v16.webp' },
-  { image: '/images/facebook-led-dragon-temple-v15.webp' },
+  { image: '/images/album-temple-clouds-v16.webp', thumb: '/images/album-thumb-temple-clouds-v29.webp' },
+  { image: '/images/facebook-dragon-workshop-v14.webp', thumb: '/images/album-thumb-workshop-v29.webp' },
+  { image: '/images/facebook-dragon-row-close-v15.webp', thumb: '/images/album-thumb-row-close-v29.webp' },
+  { image: '/images/album-ceremony-field-v16.webp', thumb: '/images/album-thumb-ceremony-field-v29.webp' },
+  { image: '/images/album-led-row-v16.webp', thumb: '/images/album-thumb-led-row-v29.webp' },
+  { image: '/images/facebook-led-dragon-temple-v15.webp', thumb: '/images/album-thumb-led-temple-v29.webp' },
 ] as const
 
 const copy = {
@@ -61,7 +64,7 @@ const copy = {
     nav: { aria: '主要导航', dragon: '龙香', products: '香品目录', craft: '手艺', story: '品牌', contact: '联络' },
     header: { homeLabel: '回到兴耀企业首页', menuLabel: '开启或关闭菜单', facebookLabel: '前往兴耀企业 Facebook 专页', descriptor: 'HENG YAU ENTERPRISE' },
     hero: {
-      kicker: '兴耀企业 · 马来西亚传统制香',
+      kicker: '兴耀企业 · 马来西亚龙香制作',
       title: '龙香起，',
       accent: '香火续。',
       text: '一柱龙香，一份敬意。为神诞、庙庆与重要祭祀，手工塑出庄严气韵。',
@@ -276,7 +279,7 @@ const copy = {
     story: {
       label: '三十余年传承 · 兴耀企业',
       title: '三十余年，\n让龙香手艺继续传下去。',
-      body: '兴耀企业扎根 Kampung Chuah 三十余年，专注手工龙香与庙庆用香。从调香、成柱、塑龙到彩绘，每一道工序都靠多年累积的经验、手感与耐心完成。新版标志延续流线龙与香烟的轮廓，也象征我们把这门传统手艺认真传下去。',
+      body: '兴耀企业扎根朱湖区（Kampung Chuah）三十余年，专注手工龙香与庙庆用香。从调香、成柱、塑龙到彩绘，每一道工序都靠多年累积的经验、手感与耐心完成。新版标志延续流线龙与香烟的轮廓，也象征我们把这门传统手艺认真传下去。',
       quote: '龙随烟起，香承心意。',
       markAlt: '兴耀企业新版龙香标志',
     },
@@ -298,7 +301,7 @@ const copy = {
       ],
       meta: [
         'PORT DICKSON · 庙前安香',
-        'KAMPUNG CHUAH · 工坊制作',
+        '朱湖区 · 工坊制作',
         '森美兰 · 龙香成品',
         '森美兰 · 庆典准备',
         '庙庆记录 · 夜间灯饰',
@@ -320,7 +323,7 @@ const copy = {
       facebookButton: 'Facebook 专页',
       facebookMeta: '查看更多作品记录',
       addressLabel: '工坊地址',
-      address: 'Lot 455A, Stor (SKLC A21/5), Kampung Chuah, 71960 Port Dickson, Negeri Sembilan',
+      address: 'Lot 455A, Stor (SKLC A21/5), 朱湖区（Kampung Chuah）, 71960 Port Dickson, Negeri Sembilan',
       mapAction: '打开地图',
       emailLabel: '电邮',
       email: 'sainem38@gmail.com',
@@ -653,14 +656,72 @@ const switchLanguage = () => {
   menuOpen.value = false
 }
 
+const scrollAlbumTo = (index: number, behavior: ScrollBehavior = 'smooth') => {
+  const track = albumTrack.value
+  const cards = track?.querySelectorAll<HTMLElement>('.facebook-photo')
+  const card = cards?.[index]
+  if (!track || !card) return
+
+  const left = card.getBoundingClientRect().left - track.getBoundingClientRect().left + track.scrollLeft
+  track.scrollTo({
+    left: Math.min(Math.max(left, 0), track.scrollWidth - track.clientWidth),
+    behavior,
+  })
+  albumActiveIndex.value = index
+}
+
 const scrollAlbum = (direction: -1 | 1) => {
-  albumTrack.value?.scrollBy({
-    left: direction * Math.max(albumTrack.value.clientWidth * 0.82, 320),
-    behavior: 'smooth',
+  const nextIndex = (
+    albumActiveIndex.value + direction + facebookPhotos.length
+  ) % facebookPhotos.length
+  scrollAlbumTo(nextIndex)
+}
+
+const syncAlbumIndex = () => {
+  if (albumScrollFrame !== null) cancelAnimationFrame(albumScrollFrame)
+  albumScrollFrame = requestAnimationFrame(() => {
+    const track = albumTrack.value
+    const cards = track?.querySelectorAll<HTMLElement>('.facebook-photo')
+    if (!track || !cards?.length) return
+
+    const trackCenter = track.getBoundingClientRect().left + track.clientWidth / 2
+    let nearestIndex = 0
+    let nearestDistance = Number.POSITIVE_INFINITY
+
+    cards.forEach((card, index) => {
+      const rect = card.getBoundingClientRect()
+      const distance = Math.abs(rect.left + rect.width / 2 - trackCenter)
+      if (distance < nearestDistance) {
+        nearestDistance = distance
+        nearestIndex = index
+      }
+    })
+
+    albumActiveIndex.value = nearestIndex
+    albumScrollFrame = null
   })
 }
 
+const preloadAlbumPhoto = (index: number) => {
+  if (typeof Image === 'undefined') return
+  const normalizedIndex = (index + facebookPhotos.length) % facebookPhotos.length
+  const source = facebookPhotos[normalizedIndex]?.image
+  if (!source || albumImagePreloads.has(source)) return
+
+  const image = new Image()
+  image.decoding = 'async'
+  image.src = source
+  albumImagePreloads.set(source, image)
+}
+
+const preloadAlbumNeighbours = (index: number) => {
+  preloadAlbumPhoto(index)
+  preloadAlbumPhoto(index - 1)
+  preloadAlbumPhoto(index + 1)
+}
+
 const openPhoto = (index: number) => {
+  preloadAlbumNeighbours(index)
   standalonePhoto.value = null
   selectedPhotoIndex.value = index
   nextTick(() => {
@@ -690,9 +751,11 @@ const closePhoto = () => {
 
 const stepPhoto = (direction: -1 | 1) => {
   if (selectedPhotoIndex.value === null) return
-  selectedPhotoIndex.value = (
+  const nextIndex = (
     selectedPhotoIndex.value + direction + facebookPhotos.length
   ) % facebookPhotos.length
+  preloadAlbumNeighbours(nextIndex)
+  selectedPhotoIndex.value = nextIndex
 }
 
 const openProduct = (index: number) => {
@@ -818,6 +881,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   document.documentElement.classList.remove('motion-ready')
   revealObserver?.disconnect()
+  if (albumScrollFrame !== null) cancelAnimationFrame(albumScrollFrame)
   window.removeEventListener('scroll', onScroll)
   window.removeEventListener('resize', syncViewport)
   window.removeEventListener('orientationchange', syncViewport)
@@ -828,8 +892,8 @@ const seo = computed(() => {
   if (locale.value === 'en') {
     return {
       title: currentView.value === 'catalog'
-        ? 'Incense Catalogue | Heng Yau Enterprise'
-        : 'Heng Yau Enterprise | Handmade Dragon Incense Malaysia',
+        ? 'Dragon Incense Catalogue | Heng Yau Enterprise Malaysia'
+        : 'Heng Yau Enterprise | Malaysian Dragon Incense Maker',
       description: 'For more than 30 years, Heng Yau Enterprise in Kampung Chuah, Port Dickson has made custom 8 ft to 24 ft dragon incense, peach incense, Da Er Bo Ye incense, ceremonial water-feature incense and wholesale everyday incense.',
       keywords: 'Heng Yau Enterprise, dragon incense Malaysia, small incense wholesale, joss sticks wholesale, spiral incense, peach incense, Da Er Bo Ye incense, 21 ft dragon incense, 24 ft dragon incense, Port Dickson, Kampung Chuah, 龙香, 小香批发, 桃香, 大二伯爷香, 兴耀企业',
       imageAlt: 'Heng Yau Enterprise monumental dragon incense illuminated for a temple celebration',
@@ -838,10 +902,10 @@ const seo = computed(() => {
 
   return {
     title: currentView.value === 'catalog'
-      ? '香品目录｜兴耀企业龙香与寺庙用香'
-      : '兴耀企业｜马来西亚龙香、庙庆与寺庙用香',
-    description: '兴耀企业扎根森美兰 Port Dickson Kampung Chuah 三十余年，制作可订制的 8 尺至 24 尺龙香、桃香、大二伯爷香与龙凤喷水香，并供应常用庙用香品。',
-    keywords: '兴耀企业, 龙香, 桃香, 大二伯爷香, 龙凤喷水香, 小香批发, 线香, 盘香, 21尺龙香, 22尺龙香, 24尺龙香, 马来西亚龙香, Kampung Chuah, Port Dickson, Heng Yau Enterprise',
+      ? '马来西亚龙香与庙庆香品目录｜兴耀企业'
+      : '兴耀企业｜马来西亚龙香制作与庙庆用香',
+    description: '兴耀企业扎根森美兰州波德申朱湖区（Kampung Chuah）三十余年，制作可订制的 8 尺至 24 尺龙香、桃香、大二伯爷香与龙凤喷水香，并供应常用庙用香品。',
+    keywords: '兴耀企业, 马来西亚龙香, 森美兰龙香, 波德申龙香, 朱湖区龙香, 龙香, 桃香, 大二伯爷香, 龙凤喷水香, 小香批发, 线香, 盘香, 21尺龙香, 22尺龙香, 24尺龙香, Kampung Chuah, Port Dickson, Heng Yau Enterprise',
     imageAlt: '兴耀企业为庙宇庆典制作并点亮的高身龙香',
   }
 })
@@ -857,19 +921,29 @@ const structuredData = computed(() => ({
       url: siteUrl,
       logo: `${siteUrl}/images/heng-yau-logo-transparent-v6.webp`,
       image: `${siteUrl}/images/facebook-led-dragon-night-v14.webp`,
-      description: '扎根马来西亚 Kampung Chuah 三十余年的传统龙香制作企业，制作龙香、桃香、大二伯爷香与龙凤喷水香，并供应常用寺庙用香。',
+      description: '扎根马来西亚森美兰州波德申朱湖区（Kampung Chuah）三十余年的传统龙香制作企业，制作龙香、桃香、大二伯爷香与龙凤喷水香，并供应常用寺庙用香。',
+      slogan: '三十余年龙香手艺传承',
       telephone: '+60 16-363 3329',
       email: 'sainem38@gmail.com',
       address: {
         '@type': 'PostalAddress',
+        '@id': `${siteUrl}/#postal-address`,
         streetAddress: 'Lot 455A, Stor (SKLC A21/5), Kampung Chuah',
         postalCode: '71960',
-        addressLocality: 'Port Dickson',
+        addressLocality: 'Kampung Chuah, Port Dickson',
         addressRegion: 'Negeri Sembilan',
         addressCountry: 'MY',
       },
       hasMap: mapUrl,
-      areaServed: { '@type': 'Country', name: 'Malaysia' },
+      areaServed: [
+        { '@type': 'Country', name: 'Malaysia' },
+        { '@type': 'AdministrativeArea', name: 'Negeri Sembilan' },
+      ],
+      location: {
+        '@type': 'Place',
+        name: '兴耀企业朱湖区（Kampung Chuah）工坊',
+        address: { '@id': `${siteUrl}/#postal-address` },
+      },
       sameAs: [facebookUrl],
       contactPoint: {
         '@type': 'ContactPoint',
@@ -877,7 +951,7 @@ const structuredData = computed(() => ({
         contactType: 'customer enquiries',
         availableLanguage: ['Chinese', 'English'],
       },
-      knowsAbout: ['龙香', 'Dragon incense', '桃香', 'Peach incense', '大二伯爷香', '龙凤喷水香', '小香批发', '线香', '盘香', '寺庙用香', 'Temple incense', '庙庆订制香', 'Traditional incense craft'],
+      knowsAbout: ['马来西亚龙香', 'Malaysian dragon incense', '森美兰龙香', '朱湖区龙香', '龙香', 'Dragon incense', '桃香', 'Peach incense', '大二伯爷香', '龙凤喷水香', '小香批发', '线香', '盘香', '寺庙用香', 'Temple incense', '庙庆订制香', 'Traditional incense craft'],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: '兴耀企业香品目录',
@@ -902,6 +976,20 @@ const structuredData = computed(() => ({
       name: '兴耀企业｜Heng Yau Enterprise',
       publisher: { '@id': `${siteUrl}/#organization` },
       inLanguage: ['zh-Hans', 'en'],
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${siteUrl}/#webpage`,
+      url: siteUrl,
+      name: seo.value.title,
+      description: seo.value.description,
+      isPartOf: { '@id': `${siteUrl}/#website` },
+      about: { '@id': `${siteUrl}/#organization` },
+      primaryImageOfPage: {
+        '@type': 'ImageObject',
+        url: `${siteUrl}/images/facebook-led-dragon-night-v14.webp`,
+      },
+      inLanguage: locale.value === 'zh' ? 'zh-Hans' : 'en',
     },
     {
       '@type': 'FAQPage',
@@ -930,6 +1018,14 @@ const structuredData = computed(() => ({
           acceptedAnswer: {
             '@type': 'Answer',
             text: '通过 WhatsApp 016-363 3329 发送用途、场地、所需日期、尺寸与数量，即可查询合适的龙香规格。',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: '马来西亚哪里可以订制龙香？',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: '兴耀企业位于森美兰州波德申朱湖区（Kampung Chuah），拥有三十余年龙香制作经验，可通过 WhatsApp 016-363 3329 查询 8 尺至 24 尺龙香及庙庆订制香。',
           },
         },
       ],
@@ -1104,7 +1200,7 @@ useHead(() => ({
 
           <div class="dragon-collage" data-reveal="right">
             <figure class="collage-main">
-              <button type="button" class="image-open-trigger" :aria-label="`${t.facebook.enlarge}: ${t.dragon.ceremonyAlt}`" @click="openImage('/images/facebook-dragon-perspective-v15.webp', t.dragon.ceremonyAlt, 'KAMPUNG CHUAH')">
+              <button type="button" class="image-open-trigger" :aria-label="`${t.facebook.enlarge}: ${t.dragon.ceremonyAlt}`" @click="openImage('/images/facebook-dragon-perspective-v15.webp', t.dragon.ceremonyAlt, locale === 'zh' ? '朱湖区' : 'KAMPUNG CHUAH')">
                 <img src="/images/facebook-dragon-perspective-v15.webp" :alt="t.dragon.ceremonyAlt">
                 <span><Maximize2 :size="18" /></span>
               </button>
@@ -1136,7 +1232,7 @@ useHead(() => ({
           </div>
           <div class="catalogue-teaser-photos" data-reveal="right">
             <figure class="teaser-photo-large">
-              <button type="button" class="image-open-trigger" :aria-label="`${t.facebook.enlarge}: ${t.dragon.ceremonyAlt}`" @click="openImage('/images/facebook-dragon-field-row-v15.webp', t.dragon.ceremonyAlt, 'KAMPUNG CHUAH')">
+              <button type="button" class="image-open-trigger" :aria-label="`${t.facebook.enlarge}: ${t.dragon.ceremonyAlt}`" @click="openImage('/images/facebook-dragon-field-row-v15.webp', t.dragon.ceremonyAlt, locale === 'zh' ? '朱湖区' : 'KAMPUNG CHUAH')">
                 <img src="/images/facebook-dragon-field-row-v15.webp" :alt="t.dragon.ceremonyAlt" loading="lazy">
                 <span><Maximize2 :size="18" /></span>
               </button>
@@ -1161,21 +1257,31 @@ useHead(() => ({
               </button>
             </div>
           </div>
-          <div ref="albumTrack" class="facebook-photo-grid" tabindex="0" :aria-label="t.facebook.label">
+          <div
+            ref="albumTrack"
+            class="facebook-photo-grid"
+            tabindex="0"
+            :aria-label="t.facebook.label"
+            @scroll.passive="syncAlbumIndex"
+            @keydown.left.prevent="scrollAlbum(-1)"
+            @keydown.right.prevent="scrollAlbum(1)"
+          >
             <figure
               v-for="(photo, index) in facebookPhotos"
               :key="photo.image"
               class="facebook-photo"
               :class="`facebook-photo-${index + 1}`"
-              data-reveal="card"
             >
               <button
                 type="button"
                 class="album-photo-trigger"
                 :aria-label="`${t.facebook.enlarge}: ${t.facebook.items[index]}`"
                 @click="openPhoto(index)"
+                @focus="preloadAlbumNeighbours(index)"
+                @pointerenter="preloadAlbumNeighbours(index)"
+                @touchstart.passive="preloadAlbumNeighbours(index)"
               >
-                <img :src="photo.image" :alt="t.facebook.items[index]" loading="lazy">
+                <img :src="photo.thumb" :alt="t.facebook.items[index]" loading="eager" fetchpriority="low" decoding="async">
                 <span class="album-zoom" aria-hidden="true"><Maximize2 :size="19" /></span>
               </button>
             </figure>

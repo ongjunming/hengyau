@@ -4,25 +4,17 @@ import process from 'node:process'
 
 const deploymentEnv = process.env
 
-const cloudflareSiteUrl = deploymentEnv.CF_PAGES_BRANCH === 'main'
-  ? deploymentEnv.CF_PAGES_URL?.replace(
-      /^https:\/\/[^.]+\.([^.]+\.pages\.dev)\/?$/,
-      'https://$1',
-    )
-  : deploymentEnv.CF_PAGES_URL
-
-const siteUrl = (
-  deploymentEnv.NUXT_PUBLIC_SITE_URL
-  || cloudflareSiteUrl
-  || 'https://heng-yau-enterprise.developer47122.chatgpt.site'
-).replace(/\/+$/, '')
-
 const isPreviewDeployment = deploymentEnv.CF_PAGES === '1'
   && Boolean(deploymentEnv.CF_PAGES_BRANCH)
   && deploymentEnv.CF_PAGES_BRANCH !== 'main'
 
+const siteUrl = (
+  deploymentEnv.NUXT_PUBLIC_SITE_URL
+  || (isPreviewDeployment ? deploymentEnv.CF_PAGES_URL : undefined)
+  || 'https://hengyau.com'
+).replace(/\/+$/, '')
+
 const preventIndexing = isPreviewDeployment
-  || (deploymentEnv.CF_PAGES === '1' && !deploymentEnv.NUXT_PUBLIC_SITE_URL)
 
 export default defineNuxtConfig({
   compatibilityDate: '2026-09-10',
@@ -31,12 +23,12 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'zh-Hans' },
-      title: '兴耀企业｜龙香与寺庙用香',
+      title: '兴耀企业｜马来西亚龙香制作',
       meta: [
         {
           name: 'description',
           content:
-            '兴耀企业匠心制作龙香，提供适合庙庆、神诞、寺庙与传统祭祀使用的香品。',
+            '兴耀企业扎根森美兰州波德申朱湖区三十余年，制作马来西亚龙香、庙庆订制龙香与寺庙用香。',
         },
         { name: 'theme-color', content: '#241815' },
         { name: 'color-scheme', content: 'light' },

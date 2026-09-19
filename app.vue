@@ -64,19 +64,24 @@ const copy = {
     nav: { aria: '主要导航', dragon: '龙香', products: '香品目录', craft: '手艺', story: '品牌', contact: '联络' },
     header: { homeLabel: '回到兴耀企业首页', menuLabel: '开启或关闭菜单', facebookLabel: '前往兴耀企业 Facebook 专页', descriptor: 'HENG YAU ENTERPRISE' },
     hero: {
-      kicker: '兴耀企业 · 马来西亚龙香制作',
-      title: '龙香起，',
-      accent: '香火续。',
-      text: '一柱龙香，一份敬意。为神诞、庙庆与重要祭祀，手工塑出庄严气韵。',
+      kicker: '兴耀企业 · 三十余年制香经验',
+      title: '马来西亚手工龙香',
+      accent: '庙庆神诞订制。',
+      text: '龙香起，香火续。兴耀企业为庙庆、神诞、酬神与重要祭祀，手工制作并订制大型龙香。',
       primary: '看我们的龙香',
       secondary: 'WhatsApp 联络',
       note: '尺寸 · 款式 · 庙庆订制',
-      imageAlt: '兴耀企业制作并点亮灯饰的高身龙香',
+      imageAlt: '马来西亚兴耀企业庙庆手工彩绘亮灯高身龙香实景',
       productLabel: '龙香',
       productEn: 'DRAGON INCENSE',
       scroll: '向下看',
     },
     ribbon: ['龙香', '寺庙用香', '手工塑龙', '兴耀企业', '香火传承'],
+    proof: [
+      { value: '30+', label: '三十余年制香经验' },
+      { value: '8–24 尺', label: '多种龙香尺寸可订制' },
+      { value: '朱湖区', label: 'Kampung Chuah 本地工坊' },
+    ],
     dragon: {
       label: '我们的主香',
       title: '先是一支香，\n再塑一条龙。',
@@ -283,6 +288,45 @@ const copy = {
       quote: '龙随烟起，香承心意。',
       markAlt: '兴耀企业新版龙香标志',
     },
+    guides: {
+      label: '龙香资料',
+      title: '从用途、尺寸到现场，\n先了解再订制。',
+      intro: '不同庙宇净高、活动规模与安装条件，需要不同龙香规格。以下资料说明兴耀的制作方式、尺寸选择与庙庆订制须知。',
+      read: '阅读完整资料',
+      items: [
+        {
+          url: '/malaysia-dragon-incense',
+          meta: '马来西亚龙香',
+          title: '什么是手工龙香？',
+          text: '了解龙香的香身、手工塑龙、彩绘与燃点方式，以及兴耀企业在朱湖区的三十余年制作经验。',
+        },
+        {
+          url: '/dragon-incense-size-guide',
+          meta: '8 尺至 24 尺',
+          title: '龙香尺寸怎样选？',
+          text: '对照 8、12、16、18、21、22 与 24 尺的约略高度、适用场地，以及订制前需要准备的现场资料。',
+        },
+        {
+          url: '/temple-festival-incense-customisation',
+          meta: '庙庆与神诞',
+          title: '庙庆龙香可以订制什么？',
+          text: '从尺数、颜色、龙形、题字到灯饰，说明查询时应提供的日期、数量、净高与进场条件。',
+        },
+      ],
+    },
+    faq: {
+      label: '常见问题',
+      title: '订制龙香前，\n先确认这些。',
+      intro: '以下是庙宇与庆典单位查询时最常确认的资料。',
+      items: [
+        { question: '什么是龙香？', answer: '龙香以可燃香粉制成粗长香身，再沿香身手工塑制龙首、龙鳞、火焰与祥云。顶端燃点后会持续冒烟并留下香灰。' },
+        { question: '龙香适合哪些场合？', answer: '龙香常用于庙庆、神诞、酬神、祈福与重要祭祀。具体尺寸、数量与造型应按现场净高和活动规模确认。' },
+        { question: '有哪些龙香尺寸？', answer: '兴耀企业可查询 8、12、16、18、21、22 与 24 尺龙香。标称尺数为约略规格，实际成品、木芯与支架高度会按款式与安装方式确认。' },
+        { question: '颜色、造型与灯饰可以订制吗？', answer: '可以。大型香品可按场地、尺数、颜色、造型、题字与灯饰需求确认；最终方案仍需配合结构、安全距离与现场条件。' },
+        { question: '订制龙香需要提供什么资料？', answer: '请通过 WhatsApp 发送庙宇或场地照片、净高、地面情况、周边电线、所需日期、尺寸与数量，再确认制作、运输与安装安排。' },
+        { question: '马来西亚哪里可以订制手工龙香？', answer: '兴耀企业位于森美兰州波德申朱湖区（Kampung Chuah），拥有三十余年龙香制作经验。可通过 WhatsApp 016-363 3329 查询各尺寸龙香与庙庆订制香。' },
+      ],
+    },
     facebook: {
       label: '作品相册',
       title: '兴耀龙香作品',
@@ -341,10 +385,10 @@ const copy = {
     nav: { aria: 'Main navigation', dragon: 'Dragon Incense', products: 'Catalogue', craft: 'Craft', story: 'Brand', contact: 'Contact' },
     header: { homeLabel: 'Return to the Heng Yau Enterprise homepage', menuLabel: 'Open or close menu', facebookLabel: 'Visit Heng Yau Enterprise on Facebook', descriptor: 'HENG YAU ENTERPRISE · DRAGON INCENSE' },
     hero: {
-      kicker: 'HENG YAU ENTERPRISE · MALAYSIAN INCENSE MAKERS',
-      title: 'The dragon rises.',
-      accent: 'Tradition endures.',
-      text: 'A monumental incense offering, shaped by hand for temple festivals, celebrations and meaningful ceremonies.',
+      kicker: 'HENG YAU ENTERPRISE · OVER 30 YEARS OF CRAFT',
+      title: 'Handmade dragon incense in Malaysia.',
+      accent: 'Custom-made for temple festivals.',
+      text: 'The dragon rises and the incense tradition continues. Heng Yau makes monumental dragon incense by hand for deity birthdays, temple festivals, thanksgiving rites and important ceremonies.',
       primary: 'Discover dragon incense',
       secondary: 'Contact on WhatsApp',
       note: 'Sizes · Styles · Temple orders',
@@ -354,6 +398,11 @@ const copy = {
       scroll: 'Explore',
     },
     ribbon: ['Dragon incense', 'Temple incense', 'Sculpted by hand', 'Heng Yau Enterprise', 'Living tradition'],
+    proof: [
+      { value: '30+', label: 'Years of incense-making experience' },
+      { value: '8–24 FT', label: 'Custom dragon incense sizes' },
+      { value: 'KAMPUNG CHUAH', label: 'Local workshop in Port Dickson' },
+    ],
     dragon: {
       label: 'Our signature',
       title: 'Incense first.\nThen the dragon takes form.',
@@ -559,6 +608,45 @@ const copy = {
       body: 'For more than 30 years, Heng Yau Enterprise has been rooted in Kampung Chuah, specialising in handmade dragon incense and ceremonial incense. From blending and forming to sculpting and painting, every stage depends on experience, practised hands and patience. Our renewed mark carries forward the flowing dragon and rising smoke, symbolising our commitment to continue this traditional craft.',
       quote: 'The dragon follows the smoke; incense carries the heart.',
       markAlt: 'Heng Yau Enterprise dragon incense logo',
+    },
+    guides: {
+      label: 'Dragon incense guides',
+      title: 'Understand the use, size and site\nbefore placing an order.',
+      intro: 'Every temple has different clear height, event scale and installation conditions. These guides explain Heng Yau’s making process, size selection and the information needed for a festival order.',
+      read: 'Read the full guide',
+      items: [
+        {
+          url: '/malaysia-dragon-incense',
+          meta: 'DRAGON INCENSE IN MALAYSIA',
+          title: 'What is handmade dragon incense?',
+          text: 'Learn about the incense body, hand-sculpted dragon, painted finish and lighting method, together with Heng Yau’s 30+ years of work in Kampung Chuah.',
+        },
+        {
+          url: '/dragon-incense-size-guide',
+          meta: '8 FT TO 24 FT',
+          title: 'How do you choose the right size?',
+          text: 'Compare the approximate height and suitable settings for 8, 12, 16, 18, 21, 22 and 24 ft dragon incense, plus the site details needed before ordering.',
+        },
+        {
+          url: '/temple-festival-incense-customisation',
+          meta: 'TEMPLE FESTIVALS & DEITY BIRTHDAYS',
+          title: 'What can be customised?',
+          text: 'From height, colour, dragon form and wording to lighting, see what dates, quantities, clear height and access details to send with an enquiry.',
+        },
+      ],
+    },
+    faq: {
+      label: 'Frequently asked questions',
+      title: 'What to confirm\nbefore ordering dragon incense.',
+      intro: 'These are the details temples and event organisers most often confirm before a custom order.',
+      items: [
+        { question: 'What is dragon incense?', answer: 'Dragon incense begins with a thick, long body made from burnable incense powder. Dragon heads, scales, flames and clouds are then formed by hand along the body. Once lit at the top, it continues to smoke and leave incense ash.' },
+        { question: 'Which occasions use dragon incense?', answer: 'Dragon incense is commonly used for temple festivals, deity birthdays, thanksgiving rites, blessings and important worship ceremonies. The size, quantity and design should match the venue’s clear height and the scale of the event.' },
+        { question: 'Which dragon incense sizes are available?', answer: 'Heng Yau accepts enquiries for 8, 12, 16, 18, 21, 22 and 24 ft dragon incense. These are approximate nominal sizes; final incense, core and support height depend on the design and installation method.' },
+        { question: 'Can the colour, form and lights be customised?', answer: 'Yes. Monumental incense can be planned around the venue, height, colour, form, wording and lighting requirements. The final design must also suit structural needs, safe clearance and site conditions.' },
+        { question: 'What information is needed for an order?', answer: 'Send photographs of the temple or venue, clear height, ground conditions, nearby power lines, required date, preferred size and quantity by WhatsApp. Production, transport and installation can then be confirmed.' },
+        { question: 'Where can I order handmade dragon incense in Malaysia?', answer: 'Heng Yau Enterprise is based in Kampung Chuah, Port Dickson, Negeri Sembilan and has more than 30 years of dragon-incense making experience. Enquire about custom festival incense by WhatsApp at 016-363 3329.' },
+      ],
     },
     facebook: {
       label: 'Works album',
@@ -893,9 +981,8 @@ const seo = computed(() => {
     return {
       title: currentView.value === 'catalog'
         ? 'Dragon Incense Catalogue | Heng Yau Enterprise Malaysia'
-        : 'Heng Yau Enterprise | Malaysian Dragon Incense Maker',
-      description: 'For more than 30 years, Heng Yau Enterprise in Kampung Chuah, Port Dickson has made custom 8 ft to 24 ft dragon incense, peach incense, Da Er Bo Ye incense, ceremonial water-feature incense and wholesale everyday incense.',
-      keywords: 'Heng Yau Enterprise, dragon incense Malaysia, small incense wholesale, joss sticks wholesale, spiral incense, peach incense, Da Er Bo Ye incense, 21 ft dragon incense, 24 ft dragon incense, Port Dickson, Kampung Chuah, 龙香, 小香批发, 桃香, 大二伯爷香, 兴耀企业',
+        : 'Handmade Dragon Incense Malaysia | Heng Yau Enterprise',
+      description: 'Heng Yau Enterprise is a Malaysian handmade dragon incense maker with 30+ years of experience in Kampung Chuah, offering custom 8–24 ft incense for temple festivals and deity birthdays.',
       imageAlt: 'Heng Yau Enterprise monumental dragon incense illuminated for a temple celebration',
     }
   }
@@ -903,10 +990,9 @@ const seo = computed(() => {
   return {
     title: currentView.value === 'catalog'
       ? '马来西亚龙香与庙庆香品目录｜兴耀企业'
-      : '兴耀企业｜马来西亚龙香制作与庙庆用香',
-    description: '兴耀企业扎根森美兰州波德申朱湖区（Kampung Chuah）三十余年，制作可订制的 8 尺至 24 尺龙香、桃香、大二伯爷香与龙凤喷水香，并供应常用庙用香品。',
-    keywords: '兴耀企业, 马来西亚龙香, 森美兰龙香, 波德申龙香, 朱湖区龙香, 龙香, 桃香, 大二伯爷香, 龙凤喷水香, 小香批发, 线香, 盘香, 21尺龙香, 22尺龙香, 24尺龙香, Kampung Chuah, Port Dickson, Heng Yau Enterprise',
-    imageAlt: '兴耀企业为庙宇庆典制作并点亮的高身龙香',
+      : '马来西亚手工龙香厂家｜庙庆神诞大型龙香订制｜兴耀企业',
+    description: '兴耀企业扎根森美兰波德申朱湖区三十余年，手工制作 8 尺至 24 尺龙香，提供庙庆、神诞与大型祭祀龙香订制。',
+    imageAlt: '马来西亚兴耀企业庙庆手工彩绘亮灯高身龙香实景',
   }
 })
 
@@ -998,38 +1084,14 @@ const structuredData = computed(() => ({
       '@id': `${siteUrl}/#dragon-incense-faq`,
       inLanguage: 'zh-Hans',
       mainEntity: [
-        {
+        ...copy.zh.faq.items.map(item => ({
           '@type': 'Question',
-          name: '什么是龙香？',
+          name: item.question,
           acceptedAnswer: {
             '@type': 'Answer',
-            text: '龙香以可燃香粉制成粗长香身，再沿香身手工塑制龙首、龙鳞、火焰与祥云。顶端燃点后会留下香灰并持续冒烟。',
+            text: item.answer,
           },
-        },
-        {
-          '@type': 'Question',
-          name: '龙香适合哪些场合？',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: '龙香常用于庙庆、神诞、大型祭祀、酬神与祈福场合，也可按庙宇场地、主题色彩和数量订制。',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: '如何向兴耀企业查询龙香？',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: '通过 WhatsApp 016-363 3329 发送用途、场地、所需日期、尺寸与数量，即可查询合适的龙香规格。',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: '马来西亚哪里可以订制龙香？',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: '兴耀企业位于森美兰州波德申朱湖区（Kampung Chuah），拥有三十余年龙香制作经验，可通过 WhatsApp 016-363 3329 查询 8 尺至 24 尺龙香及庙庆订制香。',
-          },
-        },
+        })),
       ],
     },
   ],
@@ -1057,7 +1119,6 @@ useHead(() => ({
   htmlAttrs: { lang: locale.value === 'zh' ? 'zh-Hans' : 'en' },
   link: [{ rel: 'canonical', href: siteUrl }],
   meta: [
-    { name: 'keywords', content: seo.value.keywords },
     { name: 'author', content: '兴耀企业 Heng Yau Enterprise' },
     { property: 'og:locale:alternate', content: locale.value === 'zh' ? 'en_MY' : 'zh_MY' },
   ],
@@ -1189,6 +1250,15 @@ useHead(() => ({
         </div>
       </div>
 
+      <section class="proof-strip" :aria-label="locale === 'zh' ? '兴耀企业制香资料' : 'Heng Yau incense-making facts'">
+        <div class="container proof-grid">
+          <div v-for="item in t.proof" :key="item.value" class="proof-item">
+            <strong>{{ item.value }}</strong>
+            <span>{{ item.label }}</span>
+          </div>
+        </div>
+      </section>
+
       <section id="dragon" class="dragon-feature section-pad">
         <div class="container dragon-grid">
           <div class="dragon-copy" data-reveal="left">
@@ -1220,7 +1290,7 @@ useHead(() => ({
         </div>
       </section>
 
-      <section class="catalogue-teaser section-pad">
+      <section id="catalogue" class="catalogue-teaser section-pad">
         <div class="container catalogue-teaser-grid">
           <div class="catalogue-teaser-copy" data-reveal="left">
             <p class="eyebrow">{{ t.products.label }}</p>
@@ -1239,6 +1309,33 @@ useHead(() => ({
                 <span><Maximize2 :size="18" /></span>
               </button>
             </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="guides-section section-pad">
+        <div class="container">
+          <div class="guides-heading" data-reveal>
+            <div>
+              <p class="eyebrow eyebrow-light">{{ t.guides.label }}</p>
+              <h2 class="preserve-lines">{{ t.guides.title }}</h2>
+            </div>
+            <p>{{ t.guides.intro }}</p>
+          </div>
+          <div class="guide-grid">
+            <a
+              v-for="(guide, index) in t.guides.items"
+              :key="guide.url"
+              class="guide-card"
+              :href="guide.url"
+              data-reveal="card"
+            >
+              <span class="guide-number">0{{ index + 1 }}</span>
+              <small>{{ guide.meta }}</small>
+              <h3>{{ guide.title }}</h3>
+              <p>{{ guide.text }}</p>
+              <span class="guide-link">{{ t.guides.read }} <ArrowUpRight :size="17" /></span>
+            </a>
           </div>
         </div>
       </section>
@@ -1333,6 +1430,25 @@ useHead(() => ({
               <i />
               <span>兴耀企业</span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq-section section-pad">
+        <div class="container faq-layout">
+          <div class="faq-heading" data-reveal="left">
+            <p class="eyebrow">{{ t.faq.label }}</p>
+            <h2 class="preserve-lines">{{ t.faq.title }}</h2>
+            <p>{{ t.faq.intro }}</p>
+          </div>
+          <div class="faq-list" data-reveal="right">
+            <details v-for="(item, index) in t.faq.items" :key="item.question" :open="index === 0">
+              <summary>
+                <span>{{ item.question }}</span>
+                <i aria-hidden="true" />
+              </summary>
+              <p>{{ item.answer }}</p>
+            </details>
           </div>
         </div>
       </section>

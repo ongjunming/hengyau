@@ -13,15 +13,21 @@ export default defineEventHandler((event) => {
   const config = useRuntimeConfig(event)
   const siteUrl = escapeXml(String(config.public.siteUrl).replace(/\/+$/, ''))
   const lastModified = new Date().toISOString().slice(0, 10)
+  const pages = [
+    { path: '/', changefreq: 'monthly', priority: '1.0' },
+    { path: '/malaysia-dragon-incense', changefreq: 'monthly', priority: '0.9' },
+    { path: '/dragon-incense-size-guide', changefreq: 'monthly', priority: '0.9' },
+    { path: '/temple-festival-incense-customisation', changefreq: 'monthly', priority: '0.9' },
+  ]
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>${siteUrl}/</loc>
+${pages.map(page => `  <url>
+    <loc>${siteUrl}${page.path}</loc>
     <lastmod>${lastModified}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority}</priority>
+  </url>`).join('\n')}
 </urlset>
 `
 })

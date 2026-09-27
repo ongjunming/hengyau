@@ -295,19 +295,19 @@ const copy = {
       read: '阅读完整资料',
       items: [
         {
-          url: '/malaysia-dragon-incense',
+          url: '/malaysia-dragon-incense/',
           meta: '马来西亚龙香',
           title: '什么是手工龙香？',
           text: '了解龙香的香身、手工塑龙、彩绘与燃点方式，以及兴耀企业在朱湖区的三十余年制作经验。',
         },
         {
-          url: '/dragon-incense-size-guide',
+          url: '/dragon-incense-size-guide/',
           meta: '8 尺至 24 尺',
           title: '龙香尺寸怎样选？',
           text: '对照 8、12、16、18、21、22 与 24 尺的约略高度、适用场地，以及订制前需要准备的现场资料。',
         },
         {
-          url: '/temple-festival-incense-customisation',
+          url: '/temple-festival-incense-customisation/',
           meta: '庙庆与神诞',
           title: '庙庆龙香可以订制什么？',
           text: '从尺数、颜色、龙形、题字到灯饰，说明查询时应提供的日期、数量、净高与进场条件。',
@@ -616,19 +616,19 @@ const copy = {
       read: 'Read the full guide',
       items: [
         {
-          url: '/malaysia-dragon-incense',
+          url: '/malaysia-dragon-incense/',
           meta: 'DRAGON INCENSE IN MALAYSIA',
           title: 'What is handmade dragon incense?',
           text: 'Learn about the incense body, hand-sculpted dragon, painted finish and lighting method, together with Heng Yau’s 30+ years of work in Kampung Chuah.',
         },
         {
-          url: '/dragon-incense-size-guide',
+          url: '/dragon-incense-size-guide/',
           meta: '8 FT TO 24 FT',
           title: 'How do you choose the right size?',
           text: 'Compare the approximate height and suitable settings for 8, 12, 16, 18, 21, 22 and 24 ft dragon incense, plus the site details needed before ordering.',
         },
         {
-          url: '/temple-festival-incense-customisation',
+          url: '/temple-festival-incense-customisation/',
           meta: 'TEMPLE FESTIVALS & DEITY BIRTHDAYS',
           title: 'What can be customised?',
           text: 'From height, colour, dragon form and wording to lighting, see what dates, quantities, clear height and access details to send with an enquiry.',

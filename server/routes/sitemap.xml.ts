@@ -15,9 +15,9 @@ export default defineEventHandler((event) => {
   const lastModified = new Date().toISOString().slice(0, 10)
   const pages = [
     { path: '/', changefreq: 'monthly', priority: '1.0' },
-    { path: '/malaysia-dragon-incense', changefreq: 'monthly', priority: '0.9' },
-    { path: '/dragon-incense-size-guide', changefreq: 'monthly', priority: '0.9' },
-    { path: '/temple-festival-incense-customisation', changefreq: 'monthly', priority: '0.9' },
+    { path: '/malaysia-dragon-incense/', changefreq: 'monthly', priority: '0.9' },
+    { path: '/dragon-incense-size-guide/', changefreq: 'monthly', priority: '0.9' },
+    { path: '/temple-festival-incense-customisation/', changefreq: 'monthly', priority: '0.9' },
   ]
 
   return `<?xml version="1.0" encoding="UTF-8"?>

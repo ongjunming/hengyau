@@ -62,9 +62,9 @@ export default defineNuxtConfig({
     prerender: {
       routes: [
         '/',
-        '/malaysia-dragon-incense',
-        '/dragon-incense-size-guide',
-        '/temple-festival-incense-customisation',
+        '/malaysia-dragon-incense/',
+        '/dragon-incense-size-guide/',
+        '/temple-festival-incense-customisation/',
         '/robots.txt',
         '/sitemap.xml',
         '/llms.txt',

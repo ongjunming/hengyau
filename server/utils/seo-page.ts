@@ -136,9 +136,9 @@ export function renderSeoPage(page: SeoPage, siteUrl: string) {
       <span><strong>兴耀企业</strong><small>HENG YAU ENTERPRISE</small></span>
     </a>
     <nav aria-label="资料页导航">
-      <a href="/malaysia-dragon-incense">龙香介绍</a>
-      <a href="/dragon-incense-size-guide">尺寸指南</a>
-      <a href="/temple-festival-incense-customisation">庙庆订制</a>
+      <a href="/malaysia-dragon-incense/">龙香介绍</a>
+      <a href="/dragon-incense-size-guide/">尺寸指南</a>
+      <a href="/temple-festival-incense-customisation/">庙庆订制</a>
     </nav>
     <a class="guide-contact" href="${whatsappUrl}" target="_blank" rel="noopener">WhatsApp 查询</a>
   </header>

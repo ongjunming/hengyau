@@ -4,9 +4,9 @@ import { resolve } from 'node:path'
 const outputRoot = resolve(process.cwd(), 'dist')
 const pages = [
   { file: 'index.html', path: '/', schemaTypes: ['LocalBusiness', 'FAQPage'] },
-  { file: 'malaysia-dragon-incense/index.html', path: '/malaysia-dragon-incense', schemaTypes: ['BreadcrumbList', 'FAQPage'] },
-  { file: 'dragon-incense-size-guide/index.html', path: '/dragon-incense-size-guide', schemaTypes: ['BreadcrumbList', 'FAQPage'] },
-  { file: 'temple-festival-incense-customisation/index.html', path: '/temple-festival-incense-customisation', schemaTypes: ['BreadcrumbList', 'FAQPage'] },
+  { file: 'malaysia-dragon-incense/index.html', path: '/malaysia-dragon-incense/', schemaTypes: ['BreadcrumbList', 'FAQPage'] },
+  { file: 'dragon-incense-size-guide/index.html', path: '/dragon-incense-size-guide/', schemaTypes: ['BreadcrumbList', 'FAQPage'] },
+  { file: 'temple-festival-incense-customisation/index.html', path: '/temple-festival-incense-customisation/', schemaTypes: ['BreadcrumbList', 'FAQPage'] },
 ]
 
 const fail = (message) => {

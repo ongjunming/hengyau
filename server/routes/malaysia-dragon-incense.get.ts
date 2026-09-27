@@ -1,7 +1,7 @@
 import { renderSeoPage, type SeoPage } from '../utils/seo-page'
 
 const page: SeoPage = {
-  path: '/malaysia-dragon-incense',
+  path: '/malaysia-dragon-incense/',
   eyebrow: '马来西亚传统制香手艺',
   title: '马来西亚手工龙香制作｜兴耀企业',
   description: '了解马来西亚手工龙香的结构、制作步骤、祭祀用途与订制资料。兴耀企业扎根朱湖区三十余年。',

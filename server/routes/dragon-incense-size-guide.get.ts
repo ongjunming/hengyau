@@ -1,7 +1,7 @@
 import { renderSeoPage, type SeoPage } from '../utils/seo-page'
 
 const page: SeoPage = {
-  path: '/dragon-incense-size-guide',
+  path: '/dragon-incense-size-guide/',
   eyebrow: '8 尺至 24 尺龙香',
   title: '龙香尺寸选择指南｜庙庆高身龙香',
   description: '比较 8、12、16、18、21、22 与 24 尺龙香的约略高度、适用场地和订制前必须确认的净高、支架与安装资料。',

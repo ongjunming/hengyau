@@ -1,7 +1,7 @@
 import { renderSeoPage, type SeoPage } from '../utils/seo-page'
 
 const page: SeoPage = {
-  path: '/temple-festival-incense-customisation',
+  path: '/temple-festival-incense-customisation/',
   eyebrow: '庙庆·神诞·酬神用香',
   title: '庙庆神诞龙香订制｜尺数、造型与灯饰',
   description: '兴耀企业提供马来西亚庙庆、神诞与酬神龙香订制查询，可按尺数、颜色、龙形、题字、数量与灯饰确认。',

@@ -10,6 +10,12 @@ const page: SeoPage = {
   imageAlt: '马来西亚兴耀企业为庙庆制作的手工彩绘龙香',
   sections: [
     {
+      heading: '龙香的其他名称',
+      paragraphs: [
+        '龙香在马来西亚也常被称为大龙香、高身龙香或庙庆龙香，繁体写作「龍香」。英文一般称为 Dragon Incense 或 Dragon Joss Stick，马来文则称为 Colok Naga。无论名称如何，指的都是以可燃香身配合手工塑龙的大型祭祀香品。',
+      ],
+    },
+    {
       heading: '什么是龙香？',
       paragraphs: [
         '龙香以香粉制成粗长香身，中间由木芯支撑。师傅再沿香身局部手工塑制龙首、龙身、龙鳞、火焰与祥云，最后上色和安装订制装饰。',

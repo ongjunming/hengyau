@@ -32,6 +32,9 @@ Heng Yau Enterprise is a Malaysian traditional incense maker rooted in Kampung C
 - Malaysian handmade dragon incense: ${siteUrl}/malaysia-dragon-incense/
 - 8 ft to 24 ft dragon incense size guide: ${siteUrl}/dragon-incense-size-guide/
 - Temple festival and deity-birthday customisation: ${siteUrl}/temple-festival-incense-customisation/
+- Temple incense catalogue (peach, Da Er Bo Ye, water-spray, wholesale): ${siteUrl}/temple-incense-products/
+- Festival dragon incense (Jade Emperor's Birthday, Nine Emperor Gods): ${siteUrl}/festival-dragon-incense/
+- Dragon incense price factors: ${siteUrl}/dragon-incense-price-guide/
 
 These pages explain the burnable incense body, hand-sculpted dragon form, ceremonial uses, approximate nominal heights, site checks and customisation details. Sizes are approximate and must be confirmed against the venue, supports and installation method.
 

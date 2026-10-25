@@ -28,6 +28,15 @@ export type SeoPage = {
   translation: SeoTranslation
 }
 
+export const guideLinks = [
+  { path: '/malaysia-dragon-incense/', nav: '龙香介绍', title: '马来西亚手工龙香制作', text: '龙香的香身结构、手工塑龙、彩绘与燃点方式。' },
+  { path: '/dragon-incense-size-guide/', nav: '尺寸指南', title: '龙香尺寸选择指南', text: '8 尺至 24 尺龙香的约略高度与适用场地。' },
+  { path: '/temple-festival-incense-customisation/', nav: '庙庆订制', title: '庙庆神诞龙香订制', text: '尺数、颜色、龙形、题字与灯饰订制须知。' },
+  { path: '/temple-incense-products/', nav: '香品目录', title: '桃香、大二伯爷香与寺庙用香', text: '桃香、大二伯爷香、龙凤喷水香与小香批发。' },
+  { path: '/festival-dragon-incense/', nav: '节庆龙香', title: '九皇爷诞、天公诞等节庆龙香', text: '常用龙香的节庆与神诞，以及订制时间安排。' },
+  { path: '/dragon-incense-price-guide/', nav: '价格参考', title: '龙香价格怎样计算？', text: '影响龙香报价的尺数、造型、数量与运输因素。' },
+]
+
 const facebookUrl = 'https://www.facebook.com/profile.php?id=100043191953658'
 const whatsappUrl = 'https://wa.me/60163633329?text=%E6%82%A8%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E6%9F%A5%E8%AF%A2%E5%85%B4%E8%80%80%E4%BC%81%E4%B8%9A%E7%9A%84%E9%BE%99%E9%A6%99%EF%BC%8F%E5%AF%BA%E5%BA%99%E7%94%A8%E9%A6%99%E3%80%82'
 
@@ -117,7 +126,9 @@ export function renderSeoPage(page: SeoPage, siteUrl: string) {
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="author" content="兴耀企业 Heng Yau Enterprise">
   <link rel="canonical" href="${canonicalUrl}">
-  <link rel="icon" type="image/webp" href="/images/heng-yau-logo-transparent-v6.webp?v=7">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="兴耀企业 Heng Yau Enterprise">
   <meta property="og:title" content="${escapeHtml(page.title)}">
@@ -132,13 +143,11 @@ export function renderSeoPage(page: SeoPage, siteUrl: string) {
 <body>
   <header class="guide-header">
     <a class="guide-brand" href="/" aria-label="回到兴耀企业首页">
-      <img src="/images/heng-yau-logo-transparent-v6.webp" alt="">
+      <img src="/images/heng-yau-logo-transparent-v6.webp" alt="兴耀企业 Heng Yau Enterprise 马来西亚龙香标志" width="47" height="52">
       <span><strong>兴耀企业</strong><small>HENG YAU ENTERPRISE</small></span>
     </a>
     <nav aria-label="资料页导航">
-      <a href="/malaysia-dragon-incense/">龙香介绍</a>
-      <a href="/dragon-incense-size-guide/">尺寸指南</a>
-      <a href="/temple-festival-incense-customisation/">庙庆订制</a>
+      ${guideLinks.map(link => `<a href="${link.path}"${link.path === page.path ? ' aria-current="page"' : ''}>${escapeHtml(link.nav)}</a>`).join('\n      ')}
     </nav>
     <a class="guide-contact" href="${whatsappUrl}" target="_blank" rel="noopener">WhatsApp 查询</a>
   </header>
@@ -184,6 +193,14 @@ export function renderSeoPage(page: SeoPage, siteUrl: string) {
             ${renderSections(page.translation.sections)}
           </div>
         </details>
+
+        <nav class="guide-related" aria-label="更多龙香资料">
+          <p class="section-label">更多龙香资料</p>
+          <h2>继续了解</h2>
+          <ul>
+            ${guideLinks.filter(link => link.path !== page.path).map(link => `<li><a href="${link.path}"><strong>${escapeHtml(link.title)}</strong><span>${escapeHtml(link.text)}</span></a></li>`).join('')}
+          </ul>
+        </nav>
       </div>
     </article>
 

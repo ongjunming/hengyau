@@ -34,20 +34,9 @@ export default defineNuxtConfig({
         { name: 'color-scheme', content: 'light' },
       ],
       link: [
-        {
-          rel: 'icon',
-          type: 'image/webp',
-          href: '/images/heng-yau-logo-transparent-v6.webp?v=7',
-        },
-        {
-          rel: 'shortcut icon',
-          type: 'image/webp',
-          href: '/images/heng-yau-logo-transparent-v6.webp?v=7',
-        },
-        {
-          rel: 'apple-touch-icon',
-          href: '/images/heng-yau-logo-transparent-v6.webp?v=7',
-        },
+        { rel: 'icon', href: '/favicon.ico', sizes: '48x48' },
+        { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/icon-192.png' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       ],
     },
   },
@@ -65,6 +54,9 @@ export default defineNuxtConfig({
         '/malaysia-dragon-incense/',
         '/dragon-incense-size-guide/',
         '/temple-festival-incense-customisation/',
+        '/temple-incense-products/',
+        '/festival-dragon-incense/',
+        '/dragon-incense-price-guide/',
         '/robots.txt',
         '/sitemap.xml',
         '/llms.txt',

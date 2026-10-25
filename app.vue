@@ -312,6 +312,24 @@ const copy = {
           title: '庙庆龙香可以订制什么？',
           text: '从尺数、颜色、龙形、题字到灯饰，说明查询时应提供的日期、数量、净高与进场条件。',
         },
+        {
+          url: '/temple-incense-products/',
+          meta: '寺庙用香目录',
+          title: '桃香、大二伯爷香有什么不同？',
+          text: '认识 8 尺桃香、大二伯爷香、龙凤喷水香，以及小香、线香与盘香批发供应。',
+        },
+        {
+          url: '/festival-dragon-incense/',
+          meta: '天公诞 · 九皇爷诞',
+          title: '节庆龙香要多早订制？',
+          text: '天公诞、九皇爷诞与各神明千秋的龙香用途，以及节庆前订制时间建议。',
+        },
+        {
+          url: '/dragon-incense-price-guide/',
+          meta: '报价参考',
+          title: '龙香价格怎样计算？',
+          text: '尺数、造型、颜色、灯饰、数量与运输如何影响报价，以及如何快速取得准确报价。',
+        },
       ],
     },
     faq: {
@@ -632,6 +650,24 @@ const copy = {
           meta: 'TEMPLE FESTIVALS & DEITY BIRTHDAYS',
           title: 'What can be customised?',
           text: 'From height, colour, dragon form and wording to lighting, see what dates, quantities, clear height and access details to send with an enquiry.',
+        },
+        {
+          url: '/temple-incense-products/',
+          meta: 'TEMPLE INCENSE CATALOGUE',
+          title: 'Peach and Da Er Bo Ye incense',
+          text: 'Explore 8 ft peach incense, Da Er Bo Ye incense, dragon-and-phoenix water-spray incense and wholesale everyday temple incense.',
+        },
+        {
+          url: '/festival-dragon-incense/',
+          meta: 'JADE EMPEROR · NINE EMPEROR GODS',
+          title: 'When to order festival incense?',
+          text: 'How dragon incense is used for the Jade Emperor’s Birthday, the Nine Emperor Gods Festival and deity birthdays, and how early to plan.',
+        },
+        {
+          url: '/dragon-incense-price-guide/',
+          meta: 'QUOTATION GUIDE',
+          title: 'How is dragon incense priced?',
+          text: 'See how height, design, colour, lighting, quantity and transport affect a quotation, and what to send for an accurate quote.',
         },
       ],
     },
@@ -1037,7 +1073,7 @@ const structuredData = computed(() => ({
         contactType: 'customer enquiries',
         availableLanguage: ['Chinese', 'English'],
       },
-      knowsAbout: ['马来西亚龙香', 'Malaysian dragon incense', '森美兰龙香', '朱湖区龙香', '龙香', 'Dragon incense', '桃香', 'Peach incense', '大二伯爷香', '龙凤喷水香', '小香批发', '线香', '盘香', '寺庙用香', 'Temple incense', '庙庆订制香', 'Traditional incense craft'],
+      knowsAbout: ['马来西亚龙香', 'Malaysian dragon incense', '森美兰龙香', '波德申龙香', '朱湖区龙香', '龙香', '龍香', '大龙香', 'Dragon incense', 'Dragon joss stick', 'Colok naga', '桃香', 'Peach incense', '大二伯爷香', '龙凤喷水香', '小香批发', '线香', '盘香', '寺庙用香', 'Temple incense', '庙庆订制香', '天公诞龙香', '九皇爷诞龙香', 'Traditional incense craft'],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: '兴耀企业香品目录',
@@ -1146,7 +1182,7 @@ useHead(() => ({
       <div class="container header-inner">
         <button type="button" class="compact-brand" :aria-label="t.header.homeLabel" @click="showHomeSection('top')">
           <span class="header-logo-frame">
-            <img src="/images/heng-yau-logo-transparent-v6.webp" alt="">
+            <img src="/images/heng-yau-logo-transparent-v6.webp" alt="兴耀企业 Heng Yau Enterprise 马来西亚龙香标志">
           </span>
           <span class="compact-words">
             <strong>兴耀企业</strong>
@@ -1676,7 +1712,7 @@ useHead(() => ({
       <div class="container footer-main">
         <div class="footer-brand">
           <span class="footer-logo-frame">
-            <img src="/images/heng-yau-logo-transparent-v6.webp" alt="">
+            <img src="/images/heng-yau-logo-transparent-v6.webp" alt="兴耀企业 Heng Yau Enterprise 马来西亚龙香标志">
           </span>
           <div>
             <strong>兴耀企业</strong>

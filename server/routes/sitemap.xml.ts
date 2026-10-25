@@ -18,6 +18,9 @@ export default defineEventHandler((event) => {
     { path: '/malaysia-dragon-incense/', changefreq: 'monthly', priority: '0.9' },
     { path: '/dragon-incense-size-guide/', changefreq: 'monthly', priority: '0.9' },
     { path: '/temple-festival-incense-customisation/', changefreq: 'monthly', priority: '0.9' },
+    { path: '/temple-incense-products/', changefreq: 'monthly', priority: '0.8' },
+    { path: '/festival-dragon-incense/', changefreq: 'monthly', priority: '0.8' },
+    { path: '/dragon-incense-price-guide/', changefreq: 'monthly', priority: '0.8' },
   ]
 
   return `<?xml version="1.0" encoding="UTF-8"?>

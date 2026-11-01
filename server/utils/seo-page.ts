@@ -1,7 +1,21 @@
+type SeoTable = {
+  caption?: string
+  headers: string[]
+  rows: string[][]
+}
+
+type SeoGalleryItem = {
+  image: string
+  alt: string
+  caption: string
+}
+
 type SeoSection = {
   heading: string
   paragraphs: string[]
   bullets?: string[]
+  table?: SeoTable
+  gallery?: SeoGalleryItem[]
 }
 
 type SeoFaq = {
@@ -47,11 +61,38 @@ const escapeHtml = (value: string) => value
   .replaceAll('"', '&quot;')
   .replaceAll("'", '&#039;')
 
+const renderTable = (table: SeoTable) => `
+  <div class="guide-table-wrap">
+    <table class="guide-table">
+      ${table.caption ? `<caption>${escapeHtml(table.caption)}</caption>` : ''}
+      <thead>
+        <tr>${table.headers.map(header => `<th scope="col">${escapeHtml(header)}</th>`).join('')}</tr>
+      </thead>
+      <tbody>
+        ${table.rows.map(row => `<tr>${row.map(cell => `<td>${escapeHtml(cell)}</td>`).join('')}</tr>`).join('')}
+      </tbody>
+    </table>
+  </div>
+`
+
+const renderGallery = (gallery: SeoGalleryItem[]) => `
+  <div class="guide-gallery">
+    ${gallery.map(item => `
+      <figure class="guide-gallery-item">
+        <img src="${item.image}" alt="${escapeHtml(item.alt)}" loading="lazy">
+        <figcaption>${escapeHtml(item.caption)}</figcaption>
+      </figure>
+    `).join('')}
+  </div>
+`
+
 const renderSections = (sections: SeoSection[]) => sections.map(section => `
   <section class="guide-section">
     <h2>${escapeHtml(section.heading)}</h2>
     ${section.paragraphs.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('')}
     ${section.bullets?.length ? `<ul>${section.bullets.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : ''}
+    ${section.table ? renderTable(section.table) : ''}
+    ${section.gallery?.length ? renderGallery(section.gallery) : ''}
   </section>
 `).join('')
 
@@ -65,7 +106,7 @@ export function renderSeoPage(page: SeoPage, siteUrl: string) {
         '@type': ['Organization', 'LocalBusiness'],
         '@id': `${siteUrl}/#organization`,
         name: '兴耀企业',
-        alternateName: 'Heng Yau Enterprise',
+        alternateName: ['Heng Yau Enterprise', '兴耀龙香', '兴耀企业手工龙香'],
         url: siteUrl,
         logo: `${siteUrl}/images/heng-yau-logo-transparent-v6.webp`,
         telephone: '+60 16-363 3329',
@@ -78,6 +119,17 @@ export function renderSeoPage(page: SeoPage, siteUrl: string) {
           addressRegion: 'Negeri Sembilan',
           addressCountry: 'MY',
         },
+        areaServed: [
+          { '@type': 'Country', name: 'Malaysia' },
+          { '@type': 'AdministrativeArea', name: 'Negeri Sembilan' },
+          { '@type': 'AdministrativeArea', name: 'Selangor' },
+          { '@type': 'AdministrativeArea', name: 'Kuala Lumpur' },
+          { '@type': 'AdministrativeArea', name: 'Melaka' },
+          { '@type': 'AdministrativeArea', name: 'Johor' },
+          { '@type': 'AdministrativeArea', name: 'Perak' },
+          { '@type': 'AdministrativeArea', name: 'Penang' },
+        ],
+        knowsAbout: ['龙香', '龍香', '马来西亚龙香', '手工龙香', '大龙香', '高身龙香', 'LED龙香', '龙香厂家', '龙香订制', '拜天公龙香', '天公诞龙香', '九皇爷诞龙香', '桃香', '大二伯爷香', '龙凤喷水香', '小香批发'],
         sameAs: [facebookUrl],
       },
       {
@@ -198,6 +250,7 @@ export function renderSeoPage(page: SeoPage, siteUrl: string) {
           <p class="section-label">更多龙香资料</p>
           <h2>继续了解</h2>
           <ul>
+            <li class="guide-related-home"><a href="/"><strong>兴耀企业马来西亚手工龙香首页（8 尺至 24 尺完整香品目录）</strong><span>回到主站浏览 8 尺至 24 尺龙香、桃香、大二伯爷香、龙凤喷水香实物目录与工坊相册。</span></a></li>
             ${guideLinks.filter(link => link.path !== page.path).map(link => `<li><a href="${link.path}"><strong>${escapeHtml(link.title)}</strong><span>${escapeHtml(link.text)}</span></a></li>`).join('')}
           </ul>
         </nav>

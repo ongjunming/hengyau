@@ -337,12 +337,12 @@ const copy = {
       title: '订制龙香前，\n先确认这些。',
       intro: '以下是庙宇与庆典单位查询时最常确认的资料。',
       items: [
-        { question: '什么是龙香？', answer: '龙香以可燃香粉制成粗长香身，再沿香身手工塑制龙首、龙鳞、火焰与祥云。顶端燃点后会持续冒烟并留下香灰。' },
-        { question: '龙香适合哪些场合？', answer: '龙香常用于庙庆、神诞、酬神、祈福与重要祭祀。具体尺寸、数量与造型应按现场净高和活动规模确认。' },
-        { question: '有哪些龙香尺寸？', answer: '兴耀企业可查询 8、12、16、18、21、22 与 24 尺龙香。标称尺数为约略规格，实际成品、木芯与支架高度会按款式与安装方式确认。' },
-        { question: '颜色、造型与灯饰可以订制吗？', answer: '可以。大型香品可按场地、尺数、颜色、造型、题字与灯饰需求确认；最终方案仍需配合结构、安全距离与现场条件。' },
+        { question: '什么是龙香？', answer: '龙香（又称大龙香、高身龙香，英文 Dragon Incense / Dragon Joss Stick，马来文 Colok Naga）以可燃香粉制成粗长香身，再沿香身手工塑制龙首、龙鳞、火焰与祥云。顶端燃点后会持续冒烟并留下香灰。' },
+        { question: '龙香适合哪些场合？', answer: '龙香常用于天公诞（拜天公）、九皇爷诞、观音诞、大伯爷与二伯爷千秋、中元普度、庙庆、神诞、酬神与祈福祭祀。具体尺寸、数量与造型应按现场净高和活动规模确认。' },
+        { question: '有哪些龙香尺寸？', answer: '兴耀企业提供 8 尺（约 2.4 米）、12 尺（约 3.7 米）、16 尺（约 4.9 米）、18 尺（约 5.5 米）、21 尺（约 6.4 米）、22 尺（约 6.7 米）与 24 尺（约 7.3 米）手工龙香，以及 8 尺桃香、大二伯爷香、龙凤喷水香与小香批发。标称尺数为约略规格，实际成品、木芯与支架高度会按款式与安装方式确认。' },
+        { question: '颜色、造型与 LED 灯饰可以订制吗？', answer: '可以。大型龙香可按场地、尺数、颜色、盘龙造型、庙名题字与夜间 LED 亮灯需求订制；最终方案仍需配合结构、安全距离与现场条件。' },
         { question: '订制龙香需要提供什么资料？', answer: '请通过 WhatsApp 发送庙宇或场地照片、净高、地面情况、周边电线、所需日期、尺寸与数量，再确认制作、运输与安装安排。' },
-        { question: '马来西亚哪里可以订制手工龙香？', answer: '兴耀企业位于森美兰州波德申朱湖区（Kampung Chuah），拥有三十余年龙香制作经验。可通过 WhatsApp 016-363 3329 查询各尺寸龙香与庙庆订制香。' },
+        { question: '马来西亚哪里可以订制手工龙香？支援哪些州属？', answer: '兴耀企业位于森美兰州波德申朱湖区（Kampung Chuah），拥有三十余年手工龙香制作经验，接受森美兰、雪隆（吉隆坡、雪兰莪）、马六甲、柔佛、霹雳、槟城及全马各地庙宇与庆典单位查询订制。欢迎通过 WhatsApp 016-363 3329 联系。' },
       ],
     },
     facebook: {
@@ -1026,8 +1026,8 @@ const seo = computed(() => {
   return {
     title: currentView.value === 'catalog'
       ? '马来西亚龙香与庙庆香品目录｜兴耀企业'
-      : '马来西亚手工龙香厂家｜庙庆神诞大型龙香订制｜兴耀企业',
-    description: '兴耀企业扎根森美兰波德申朱湖区三十余年，手工制作 8 尺至 24 尺龙香，提供庙庆、神诞与大型祭祀龙香订制。',
+      : '马来西亚龙香厂家｜8尺至24尺手工大龙香与庙庆神诞订制｜兴耀企业',
+    description: '兴耀企业（Heng Yau Enterprise）扎根马来西亚森美兰波德申朱湖区三十余年，专营手工龙香、大龙香与LED亮灯龙香（8尺至24尺），提供天公诞、九皇爷诞、庙庆神诞龙香、桃香、大二伯爷香、龙凤喷水香订制与小香批发。',
     imageAlt: '马来西亚兴耀企业庙庆手工彩绘亮灯高身龙香实景',
   }
 })
@@ -1039,11 +1039,11 @@ const structuredData = computed(() => ({
       '@type': ['Organization', 'LocalBusiness'],
       '@id': `${siteUrl}/#organization`,
       name: '兴耀企业',
-      alternateName: 'Heng Yau Enterprise',
+      alternateName: ['Heng Yau Enterprise', '兴耀龙香', '兴耀企业手工龙香'],
       url: siteUrl,
       logo: `${siteUrl}/images/heng-yau-logo-transparent-v6.webp`,
       image: `${siteUrl}/images/facebook-led-dragon-night-v14.webp`,
-      description: '扎根马来西亚森美兰州波德申朱湖区（Kampung Chuah）三十余年的传统龙香制作企业，制作龙香、桃香、大二伯爷香与龙凤喷水香，并供应常用寺庙用香。',
+      description: '扎根马来西亚森美兰州波德申朱湖区（Kampung Chuah）三十余年的传统手工龙香制作厂家，订制 8 尺至 24 尺大型龙香、LED亮灯龙香、桃香、大二伯爷香与龙凤喷水香，并供应小香、线香、盘香等常用寺庙用香批发。',
       slogan: '三十余年龙香手艺传承',
       telephone: '+60 16-363 3329',
       email: 'sainem38@gmail.com',
@@ -1060,6 +1060,12 @@ const structuredData = computed(() => ({
       areaServed: [
         { '@type': 'Country', name: 'Malaysia' },
         { '@type': 'AdministrativeArea', name: 'Negeri Sembilan' },
+        { '@type': 'AdministrativeArea', name: 'Selangor' },
+        { '@type': 'AdministrativeArea', name: 'Kuala Lumpur' },
+        { '@type': 'AdministrativeArea', name: 'Melaka' },
+        { '@type': 'AdministrativeArea', name: 'Johor' },
+        { '@type': 'AdministrativeArea', name: 'Perak' },
+        { '@type': 'AdministrativeArea', name: 'Penang' },
       ],
       location: {
         '@type': 'Place',
@@ -1071,9 +1077,9 @@ const structuredData = computed(() => ({
         '@type': 'ContactPoint',
         telephone: '+60 16-363 3329',
         contactType: 'customer enquiries',
-        availableLanguage: ['Chinese', 'English'],
+        availableLanguage: ['Chinese', 'English', 'Malay'],
       },
-      knowsAbout: ['马来西亚龙香', 'Malaysian dragon incense', '森美兰龙香', '波德申龙香', '朱湖区龙香', '龙香', '龍香', '大龙香', 'Dragon incense', 'Dragon joss stick', 'Colok naga', '桃香', 'Peach incense', '大二伯爷香', '龙凤喷水香', '小香批发', '线香', '盘香', '寺庙用香', 'Temple incense', '庙庆订制香', '天公诞龙香', '九皇爷诞龙香', 'Traditional incense craft'],
+      knowsAbout: ['龙香', '龍香', '马来西亚龙香', '手工龙香', '大龙香', '高身龙香', 'LED龙香', '龙香厂家', '龙香订制', '龙香批发', '拜天公龙香', '天公诞龙香', '九皇爷诞龙香', '庙庆龙香', '神诞龙香', 'Malaysian dragon incense', 'Dragon incense', 'Dragon joss stick', 'Colok naga', '森美兰龙香', '波德申龙香', '朱湖区龙香', '雪隆龙香', '桃香', 'Peach incense', '大二伯爷香', '龙凤喷水香', '小香批发', '线香', '盘香', '寺庙用香', 'Temple incense', 'Traditional incense craft'],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: '兴耀企业香品目录',
@@ -1345,6 +1351,27 @@ useHead(() => ({
                 <span><Maximize2 :size="18" /></span>
               </button>
             </figure>
+          </div>
+        </div>
+
+        <div class="container catalogue-index-wrap" data-reveal>
+          <div class="catalogue-index-grid" :aria-label="t.products.pageTitle">
+            <article
+              v-for="(item, index) in t.products.items"
+              :key="item.name"
+              class="catalogue-index-item"
+            >
+              <button type="button" class="catalogue-index-trigger" @click="openProduct(index)">
+                <div class="catalogue-index-head">
+                  <span class="catalogue-index-no">
+                    {{ item.no }}<small v-if="isNumericProductNo(item.no)">{{ locale === 'zh' ? '尺' : 'FT' }}</small>
+                  </span>
+                  <small class="catalogue-index-type">{{ item.type }}</small>
+                </div>
+                <h3>{{ item.name }}</h3>
+                <p>{{ item.text }}</p>
+              </button>
+            </article>
           </div>
         </div>
       </section>

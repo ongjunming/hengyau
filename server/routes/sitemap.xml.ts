@@ -16,10 +16,14 @@ export default defineEventHandler((event) => {
   const pages = [
     {
       path: '/',
-      changefreq: 'monthly',
+      changefreq: 'weekly',
       priority: '1.0',
       images: [
-        { loc: '/images/facebook-led-dragon-night-v14.webp', title: '马来西亚兴耀企业庙庆手工彩绘亮灯高身龙香实景' },
+        { loc: '/images/hero-led-night-v30.webp', title: '马来西亚兴耀企业庙庆手工彩绘亮灯高身龙香实景' },
+        { loc: '/images/fb-night-led-row-v30.webp', title: '马来西亚庙庆夜间亮灯成排手工龙香｜兴耀企业' },
+        { loc: '/images/fb-temple-trio-day-v30.webp', title: '马来西亚庙前安香三柱高身彩绘龙香｜兴耀企业' },
+        { loc: '/images/fb-workshop-craft-row-v30.webp', title: '森美兰波德申朱湖区兴耀制香工坊实景' },
+        { loc: '/images/fb-festival-field-v30.webp', title: '马来西亚大型神诞庆典成排红身手工龙香｜兴耀企业' },
         { loc: '/images/catalog-dragon-08ft-v23.webp', title: '8 尺龙香｜兴耀企业马来西亚手工龙香' },
         { loc: '/images/catalog-dragon-12ft-v22.webp', title: '12 尺龙香｜兴耀企业马来西亚手工龙香' },
         { loc: '/images/catalog-dragon-16ft-v22.webp', title: '16 尺龙香｜兴耀企业马来西亚手工龙香' },
@@ -34,11 +38,11 @@ export default defineEventHandler((event) => {
     },
     {
       path: '/malaysia-dragon-incense/',
-      changefreq: 'monthly',
+      changefreq: 'weekly',
       priority: '0.9',
       images: [
-        { loc: '/images/facebook-dragon-perspective-v15.webp', title: '马来西亚兴耀企业为庙庆制作的手工彩绘龙香' },
-        { loc: '/images/heng-yau-craft-hands-v28.webp', title: '兴耀企业师傅手工塑制龙香龙鳞与彩绘细节' },
+        { loc: '/images/fb-festival-field-v30.webp', title: '马来西亚兴耀企业为庙庆制作的手工彩绘龙香' },
+        { loc: '/images/fb-workshop-craft-row-v30.webp', title: '兴耀企业朱湖区工坊手工龙香制作实拍' },
       ],
     },
     {

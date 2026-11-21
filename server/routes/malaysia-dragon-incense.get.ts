@@ -6,7 +6,7 @@ const page: SeoPage = {
   title: '马来西亚手工龙香制作与庙庆大龙香订制（8尺至24尺）｜兴耀企业',
   description: '兴耀企业扎根马来西亚森美兰波德申朱湖区三十余年，手工制作8尺至24尺大龙香、LED亮灯龙香、桃香、大二伯爷香与龙凤喷水香，支援天公诞、九皇爷诞及全马庙庆订制。',
   introduction: '龙香不只是彩绘造型，主体仍是可燃的长形香身。兴耀企业在森美兰波德申朱湖区（Kampung Chuah）手工制作龙香三十余年，按庙宇场地、尺数、主题与活动日期，为森美兰、雪隆、马六甲、柔佛、霹雳、槟城及全马庙宇确认每一批作品。',
-  image: '/images/facebook-dragon-perspective-v15.webp',
+  image: '/images/fb-festival-field-v30.webp',
   imageAlt: '马来西亚兴耀企业为庙庆制作的手工彩绘龙香',
   sections: [
     {
@@ -23,14 +23,14 @@ const page: SeoPage = {
       ],
       gallery: [
         {
-          image: '/images/heng-yau-craft-hands-v28.webp',
-          alt: '兴耀企业师傅手工塑制龙香龙鳞与彩绘细节',
-          caption: '朱湖区工坊：师傅以双手沿可燃香身塑出立体龙鳞与祥云',
+          image: '/images/fb-workshop-craft-row-v30.webp',
+          alt: '兴耀企业朱湖区工坊手工制作排列中的龙香实拍',
+          caption: '朱湖区工坊实拍：手工彩绘、阴干待出厂的一排大型红身龙香',
         },
         {
-          image: '/images/facebook-led-dragon-temple-v15.webp',
+          image: '/images/fb-night-led-row-v30.webp',
           alt: '马来西亚庙庆夜间点亮的兴耀企业LED高身龙香',
-          caption: '庙庆现场：日间彩绘庄严、夜间可配 LED 亮灯的庙庆主香',
+          caption: '庙庆现场实拍：夜间成排亮灯的兴耀高身彩绘龙香',
         },
       ],
     },

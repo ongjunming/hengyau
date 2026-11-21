@@ -38,10 +38,22 @@ const catalogDialog = ref<HTMLDialogElement | null>(null)
 const photoDialog = ref<HTMLDialogElement | null>(null)
 const albumTrack = ref<HTMLElement | null>(null)
 const albumActiveIndex = ref(0)
+const heroPointer = ref({ x: 64, y: 42 })
 const runtimeConfig = useRuntimeConfig()
 let revealObserver: IntersectionObserver | null = null
 let albumScrollFrame: number | null = null
 const albumImagePreloads = new Map<string, HTMLImageElement>()
+
+const onHeroPointerMove = (event: PointerEvent) => {
+  const target = event.currentTarget as HTMLElement | null
+  if (!target) return
+  const rect = target.getBoundingClientRect()
+  if (!rect.width || !rect.height) return
+  heroPointer.value = {
+    x: Math.round(((event.clientX - rect.left) / rect.width) * 100),
+    y: Math.round(((event.clientY - rect.top) / rect.height) * 100),
+  }
+}
 
 const facebookUrl = 'https://www.facebook.com/profile.php?id=100043191953658'
 const emailUrl = 'mailto:sainem38@gmail.com'
@@ -51,12 +63,12 @@ const robotsDirective = runtimeConfig.public.preventIndexing
   ? 'noindex, nofollow, noarchive'
   : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
 const facebookPhotos = [
-  { image: '/images/album-temple-clouds-v16.webp', thumb: '/images/album-thumb-temple-clouds-v29.webp' },
-  { image: '/images/facebook-dragon-workshop-v14.webp', thumb: '/images/album-thumb-workshop-v29.webp' },
-  { image: '/images/facebook-dragon-row-close-v15.webp', thumb: '/images/album-thumb-row-close-v29.webp' },
-  { image: '/images/album-ceremony-field-v16.webp', thumb: '/images/album-thumb-ceremony-field-v29.webp' },
-  { image: '/images/album-led-row-v16.webp', thumb: '/images/album-thumb-led-row-v29.webp' },
-  { image: '/images/facebook-led-dragon-temple-v15.webp', thumb: '/images/album-thumb-led-temple-v29.webp' },
+  { image: '/images/fb-temple-trio-day-v30.webp', thumb: '/images/fb-temple-trio-day-v30.webp' },
+  { image: '/images/fb-workshop-craft-row-v30.webp', thumb: '/images/fb-workshop-craft-row-v30.webp' },
+  { image: '/images/fb-night-led-row-v30.webp', thumb: '/images/fb-night-led-row-v30.webp' },
+  { image: '/images/fb-festival-field-v30.webp', thumb: '/images/fb-festival-field-v30.webp' },
+  { image: '/images/hero-led-night-v30.webp', thumb: '/images/hero-led-night-v30.webp' },
+  { image: '/images/catalog-dragon-phoenix-fountain-v21.webp', thumb: '/images/catalog-dragon-phoenix-fountain-v21.webp' },
 ] as const
 
 const copy = {
@@ -64,17 +76,17 @@ const copy = {
     nav: { aria: '主要导航', dragon: '龙香', products: '香品目录', craft: '手艺', story: '品牌', contact: '联络' },
     header: { homeLabel: '回到兴耀企业首页', menuLabel: '开启或关闭菜单', facebookLabel: '前往兴耀企业 Facebook 专页', descriptor: 'HENG YAU ENTERPRISE' },
     hero: {
-      kicker: '兴耀企业 · 三十余年制香经验',
+      kicker: '森美兰波德申朱湖 · 三十余年制香老工坊',
       title: '马来西亚手工龙香',
       accent: '庙庆神诞订制。',
-      text: '龙香起，香火续。兴耀企业为庙庆、神诞、酬神与重要祭祀，手工制作并订制大型龙香。',
-      primary: '看我们的龙香',
-      secondary: 'WhatsApp 联络',
-      note: '尺寸 · 款式 · 庙庆订制',
+      text: '一柱好香，敬神也见心意。兴耀企业三十余年扎根朱湖工坊，手工塑龙、彩绘阴干，专为全马庙庆、天公诞、九皇爷诞与神明宝诞订制 8 尺至 24 尺大龙香。',
+      primary: '看龙香实拍',
+      secondary: 'WhatsApp 问规格',
+      note: '8–24 尺龙香 · LED 亮灯 · 全马庙庆订制',
       imageAlt: '马来西亚兴耀企业庙庆手工彩绘亮灯高身龙香实景',
       productLabel: '龙香',
       productEn: 'DRAGON INCENSE',
-      scroll: '向下看',
+      scroll: '向下浏览',
     },
     ribbon: ['龙香', '寺庙用香', '手工塑龙', '兴耀企业', '香火传承'],
     proof: [
@@ -1042,7 +1054,7 @@ const structuredData = computed(() => ({
       alternateName: ['Heng Yau Enterprise', '兴耀龙香', '兴耀企业手工龙香'],
       url: siteUrl,
       logo: `${siteUrl}/images/heng-yau-logo-transparent-v6.webp`,
-      image: `${siteUrl}/images/facebook-led-dragon-night-v14.webp`,
+      image: `${siteUrl}/images/hero-led-night-v30.webp`,
       description: '扎根马来西亚森美兰州波德申朱湖区（Kampung Chuah）三十余年的传统手工龙香制作厂家，订制 8 尺至 24 尺大型龙香、LED亮灯龙香、桃香、大二伯爷香与龙凤喷水香，并供应小香、线香、盘香等常用寺庙用香批发。',
       slogan: '三十余年龙香手艺传承',
       telephone: '+60 16-363 3329',
@@ -1117,7 +1129,7 @@ const structuredData = computed(() => ({
       about: { '@id': `${siteUrl}/#organization` },
       primaryImageOfPage: {
         '@type': 'ImageObject',
-        url: `${siteUrl}/images/facebook-led-dragon-night-v14.webp`,
+        url: `${siteUrl}/images/hero-led-night-v30.webp`,
       },
       inLanguage: locale.value === 'zh' ? 'zh-Hans' : 'en',
     },
@@ -1148,13 +1160,13 @@ useSeoMeta({
   ogTitle: () => seo.value.title,
   ogDescription: () => seo.value.description,
   ogUrl: siteUrl,
-  ogImage: `${siteUrl}/images/facebook-led-dragon-night-v14.webp`,
+  ogImage: `${siteUrl}/images/hero-led-night-v30.webp`,
   ogImageAlt: () => seo.value.imageAlt,
   ogLocale: () => locale.value === 'zh' ? 'zh_MY' : 'en_MY',
   twitterCard: 'summary_large_image',
   twitterTitle: () => seo.value.title,
   twitterDescription: () => seo.value.description,
-  twitterImage: `${siteUrl}/images/facebook-led-dragon-night-v14.webp`,
+  twitterImage: `${siteUrl}/images/hero-led-night-v30.webp`,
 })
 
 useHead(() => ({
@@ -1240,10 +1252,18 @@ useHead(() => ({
 
     <Transition name="page-switch" mode="out-in" @after-enter="onViewEntered">
       <main v-if="currentView === 'home'">
-      <section id="top" class="hero">
-        <img class="hero-image" src="/images/facebook-led-dragon-night-v14.webp" :alt="t.hero.imageAlt">
+      <section
+        id="top"
+        class="hero"
+        :style="{ '--pointer-x': `${heroPointer.x}%`, '--pointer-y': `${heroPointer.y}%` }"
+        @pointermove="onHeroPointerMove"
+      >
+        <img class="hero-image" src="/images/hero-led-night-v30.webp" :alt="t.hero.imageAlt">
         <div class="hero-shade" />
         <div class="ember-glow" />
+        <div class="hero-embers" aria-hidden="true">
+          <span v-for="n in 10" :key="n" />
+        </div>
         <div class="incense-smoke-plumes hero-smoke-plumes" aria-hidden="true">
           <span /><span /><span />
         </div>
@@ -1257,7 +1277,7 @@ useHead(() => ({
             </h1>
             <p class="hero-text">{{ t.hero.text }}</p>
             <div class="hero-actions">
-              <button type="button" class="button button-primary" @click="showHomeSection('dragon')">
+              <button type="button" class="button button-primary" @click="showHomeSection('catalogue')">
                 {{ t.hero.primary }}
                 <ArrowDown :size="18" />
               </button>
@@ -1314,14 +1334,14 @@ useHead(() => ({
 
           <div class="dragon-collage" data-reveal="right">
             <figure class="collage-main">
-              <button type="button" class="image-open-trigger" :aria-label="`${t.facebook.enlarge}: ${t.dragon.ceremonyAlt}`" @click="openImage('/images/facebook-dragon-perspective-v15.webp', t.dragon.ceremonyAlt, locale === 'zh' ? '朱湖区' : 'KAMPUNG CHUAH')">
-                <img src="/images/facebook-dragon-perspective-v15.webp" :alt="t.dragon.ceremonyAlt">
+              <button type="button" class="image-open-trigger" :aria-label="`${t.facebook.enlarge}: ${t.dragon.ceremonyAlt}`" @click="openImage('/images/fb-festival-field-v30.webp', t.dragon.ceremonyAlt, locale === 'zh' ? '森美兰 · 庙庆现场' : 'NEGERI SEMBILAN')">
+                <img src="/images/fb-festival-field-v30.webp" :alt="t.dragon.ceremonyAlt">
                 <span><Maximize2 :size="18" /></span>
               </button>
             </figure>
             <figure class="collage-detail">
-              <button type="button" class="image-open-trigger" :aria-label="`${t.facebook.enlarge}: ${t.dragon.craftAlt}`" @click="openImage('/images/facebook-dragon-temple-vertical-v15.webp', t.dragon.craftAlt, 'PORT DICKSON')">
-                <img src="/images/facebook-dragon-temple-vertical-v15.webp" :alt="t.dragon.craftAlt">
+              <button type="button" class="image-open-trigger" :aria-label="`${t.facebook.enlarge}: ${t.dragon.craftAlt}`" @click="openImage('/images/fb-temple-trio-day-v30.webp', t.dragon.craftAlt, 'PORT DICKSON')">
+                <img src="/images/fb-temple-trio-day-v30.webp" :alt="t.dragon.craftAlt">
                 <span><Maximize2 :size="18" /></span>
               </button>
             </figure>
@@ -1346,59 +1366,35 @@ useHead(() => ({
           </div>
           <div class="catalogue-teaser-photos" data-reveal="right">
             <figure class="teaser-photo-large">
-              <button type="button" class="image-open-trigger" :aria-label="`${t.facebook.enlarge}: ${t.dragon.ceremonyAlt}`" @click="openImage('/images/facebook-dragon-field-row-v15.webp', t.dragon.ceremonyAlt, locale === 'zh' ? '朱湖区' : 'KAMPUNG CHUAH')">
-                <img src="/images/facebook-dragon-field-row-v15.webp" :alt="t.dragon.ceremonyAlt" loading="lazy">
+              <button type="button" class="image-open-trigger" :aria-label="`${t.facebook.enlarge}: ${t.dragon.ceremonyAlt}`" @click="openImage('/images/catalog-dragon-21ft-v26.webp', t.dragon.ceremonyAlt, locale === 'zh' ? '21 尺亮灯龙香' : '21 FT ILLUMINATED DRAGON INCENSE')">
+                <img src="/images/catalog-dragon-21ft-v26.webp" :alt="t.dragon.ceremonyAlt" loading="lazy">
                 <span><Maximize2 :size="18" /></span>
               </button>
             </figure>
           </div>
         </div>
 
-        <div class="container catalogue-index-wrap" data-reveal>
-          <div class="catalogue-index-grid" :aria-label="t.products.pageTitle">
+        <div class="container catalogue-visual-wrap" data-reveal>
+          <div class="catalogue-visual-grid" :aria-label="t.products.pageTitle">
             <article
               v-for="(item, index) in t.products.items"
               :key="item.name"
-              class="catalogue-index-item"
+              class="catalogue-visual-card"
             >
-              <button type="button" class="catalogue-index-trigger" @click="openProduct(index)">
-                <div class="catalogue-index-head">
-                  <span class="catalogue-index-no">
+              <button type="button" class="catalogue-visual-trigger" @click="openProduct(index)">
+                <div class="catalogue-visual-media">
+                  <img :src="item.image" :alt="item.alt" loading="lazy" decoding="async">
+                  <span class="catalogue-visual-badge">
                     {{ item.no }}<small v-if="isNumericProductNo(item.no)">{{ locale === 'zh' ? '尺' : 'FT' }}</small>
                   </span>
-                  <small class="catalogue-index-type">{{ item.type }}</small>
+                  <span class="catalogue-visual-zoom" aria-hidden="true"><ArrowUpRight :size="16" /></span>
                 </div>
-                <h3>{{ item.name }}</h3>
-                <p>{{ item.text }}</p>
+                <div class="catalogue-visual-meta">
+                  <h3>{{ item.name }}</h3>
+                  <small>{{ item.type }}</small>
+                </div>
               </button>
             </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="guides-section section-pad">
-        <div class="container">
-          <div class="guides-heading" data-reveal>
-            <div>
-              <p class="eyebrow eyebrow-light">{{ t.guides.label }}</p>
-              <h2 class="preserve-lines">{{ t.guides.title }}</h2>
-            </div>
-            <p>{{ t.guides.intro }}</p>
-          </div>
-          <div class="guide-grid">
-            <a
-              v-for="(guide, index) in t.guides.items"
-              :key="guide.url"
-              class="guide-card"
-              :href="guide.url"
-              data-reveal="card"
-            >
-              <span class="guide-number">0{{ index + 1 }}</span>
-              <small>{{ guide.meta }}</small>
-              <h3>{{ guide.title }}</h3>
-              <p>{{ guide.text }}</p>
-              <span class="guide-link">{{ t.guides.read }} <ArrowUpRight :size="17" /></span>
-            </a>
           </div>
         </div>
       </section>
@@ -1443,7 +1439,11 @@ useHead(() => ({
                 @pointerenter="preloadAlbumNeighbours(index)"
                 @touchstart.passive="preloadAlbumNeighbours(index)"
               >
-                <img :src="photo.thumb" :alt="t.facebook.items[index]" loading="eager" fetchpriority="low" decoding="async">
+                <img :src="photo.thumb" :alt="t.facebook.items[index]" loading="lazy" decoding="async">
+                <span class="album-caption">
+                  <small>{{ t.facebook.meta[index] }}</small>
+                  <strong>{{ t.facebook.items[index] }}</strong>
+                </span>
                 <span class="album-zoom" aria-hidden="true"><Maximize2 :size="19" /></span>
               </button>
             </figure>
@@ -1452,7 +1452,7 @@ useHead(() => ({
       </section>
 
       <section id="craft" class="craft-section">
-        <img class="craft-backdrop" src="/images/heng-yau-craft-hands-v28.webp" :alt="t.craft.imageAlt" loading="lazy">
+        <img class="craft-backdrop" src="/images/fb-workshop-craft-row-v30.webp" :alt="t.craft.imageAlt" loading="lazy">
         <div class="craft-overlay" />
         <div class="container craft-layout">
           <div class="craft-copy" data-reveal>
@@ -1497,6 +1497,49 @@ useHead(() => ({
         </div>
       </section>
 
+      <section class="ceremony-banner">
+        <img src="/images/fb-night-led-row-v30.webp" :alt="t.ceremony.imageAlt" loading="lazy">
+        <div class="ceremony-shade" />
+        <div class="incense-smoke-plumes ceremony-smoke-plumes" aria-hidden="true">
+          <span /><span /><span />
+        </div>
+        <div class="container ceremony-type" data-reveal>
+          <p class="eyebrow eyebrow-light">{{ t.ceremony.label }}</p>
+          <h2 class="preserve-lines">{{ t.ceremony.title }}</h2>
+          <a :href="whatsappUrl" class="button button-light" target="_blank" rel="noopener">
+            <WhatsAppIcon :size="19" />
+            {{ t.ceremony.action }}
+          </a>
+        </div>
+      </section>
+
+      <section class="guides-section guides-compact section-pad">
+        <div class="container">
+          <div class="guides-compact-head" data-reveal>
+            <div>
+              <p class="eyebrow eyebrow-light">{{ t.guides.label }}</p>
+              <h2 class="preserve-lines">{{ t.guides.title }}</h2>
+            </div>
+          </div>
+          <div class="guides-compact-grid">
+            <a
+              v-for="(guide, index) in t.guides.items"
+              :key="guide.url"
+              class="guide-pill"
+              :href="guide.url"
+              data-reveal="card"
+            >
+              <span class="guide-pill-index">0{{ index + 1 }}</span>
+              <div class="guide-pill-body">
+                <small>{{ guide.meta }}</small>
+                <h3>{{ guide.title }}</h3>
+              </div>
+              <span class="guide-pill-arrow" aria-hidden="true"><ArrowUpRight :size="18" /></span>
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section class="faq-section section-pad">
         <div class="container faq-layout">
           <div class="faq-heading" data-reveal="left">
@@ -1513,22 +1556,6 @@ useHead(() => ({
               <p>{{ item.answer }}</p>
             </details>
           </div>
-        </div>
-      </section>
-
-      <section class="ceremony-banner">
-        <img src="/images/facebook-led-dragon-temple-v15.webp" :alt="t.ceremony.imageAlt" loading="lazy">
-        <div class="ceremony-shade" />
-        <div class="incense-smoke-plumes ceremony-smoke-plumes" aria-hidden="true">
-          <span /><span /><span />
-        </div>
-        <div class="container ceremony-type" data-reveal>
-          <p class="eyebrow eyebrow-light">{{ t.ceremony.label }}</p>
-          <h2 class="preserve-lines">{{ t.ceremony.title }}</h2>
-          <a :href="whatsappUrl" class="button button-light" target="_blank" rel="noopener">
-            <WhatsAppIcon :size="19" />
-            {{ t.ceremony.action }}
-          </a>
         </div>
       </section>
 
@@ -1580,7 +1607,7 @@ useHead(() => ({
 
       <main v-else class="catalog-page">
       <section class="catalog-page-hero">
-        <img src="/images/album-temple-clouds-v16.webp" :alt="t.dragon.ceremonyAlt">
+        <img src="/images/fb-temple-trio-day-v30.webp" :alt="t.dragon.ceremonyAlt">
         <div class="catalog-page-shade" />
         <div class="container catalog-page-heading" data-reveal>
           <button type="button" class="catalog-page-back" @click="showHomeSection('top')">

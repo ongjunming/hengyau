@@ -342,6 +342,36 @@ const copy = {
           title: '龙香价格怎样计算？',
           text: '尺数、造型、颜色、灯饰、数量与运输如何影响报价，以及如何快速取得准确报价。',
         },
+        {
+          url: '/24-feet-dragon-joss-stick/',
+          meta: '21尺 · 24尺大龙香',
+          title: '24尺大型龙香怎样订制？',
+          text: '21尺、22尺与24尺超高规格大龙香（24 Feet Dragon Joss Stick）场地与吊装须知。',
+        },
+        {
+          url: '/temple-projects/',
+          meta: '庙宇真实案例',
+          title: '全马庙宇实景安装案例库',
+          text: '查看朱湖龙头宫、关帝庙、三保公宝诞等全马真实龙香上架记录。',
+        },
+        {
+          url: '/about-heng-yau/',
+          meta: '三十余年朱湖工坊',
+          title: '关于兴耀企业制香厂',
+          text: '认识兴耀企业三十余年传统制香历史、工艺坚持与全马服务网络。',
+        },
+        {
+          url: '/dragon-joss-stick-manufacturer-malaysia/',
+          meta: 'ENGLISH GUIDE',
+          title: 'Dragon Joss Stick Manufacturer Malaysia',
+          text: 'Official English guide to Heng Yau Enterprise 8 ft to 24 ft handmade giant dragon joss sticks.',
+        },
+        {
+          url: '/pengilang-dupa-naga-malaysia/',
+          meta: 'BAHASA MELAYU',
+          title: 'Pengilang Dupa Naga Malaysia',
+          text: 'Kilang colok naga tradisional 8 hingga 24 kaki di Kampung Chuah, Port Dickson.',
+        },
       ],
     },
     faq: {
@@ -1091,7 +1121,11 @@ const structuredData = computed(() => ({
         contactType: 'customer enquiries',
         availableLanguage: ['Chinese', 'English', 'Malay'],
       },
-      knowsAbout: ['龙香', '龍香', '马来西亚龙香', '手工龙香', '大龙香', '高身龙香', 'LED龙香', '龙香厂家', '龙香订制', '龙香批发', '拜天公龙香', '天公诞龙香', '九皇爷诞龙香', '庙庆龙香', '神诞龙香', 'Malaysian dragon incense', 'Dragon incense', 'Dragon joss stick', 'Colok naga', '森美兰龙香', '波德申龙香', '朱湖区龙香', '雪隆龙香', '桃香', 'Peach incense', '大二伯爷香', '龙凤喷水香', '小香批发', '线香', '盘香', '寺庙用香', 'Temple incense', 'Traditional incense craft'],
+      knowsAbout: [
+        '龙香', '龍香', '马来西亚龙香', '马来西亚龙香制造商', '手工龙香', '大型龙香', '大龙香', '24尺龙香', '21尺龙香', '定制龙香', '庙宇龙香', 'LED龙香', '龙香厂家', '龙香供应商', '龙香订制', '龙香批发', '拜天公龙香', '天公诞龙香', '九皇爷诞龙香', '庙庆龙香', '神诞龙香', '森美兰龙香制造厂', '波德申龙香', '朱湖区龙香', '雪隆龙香', '桃香', '大二伯爷香', '龙凤喷水香', '小香批发', '寺庙用香',
+        'Dragon Joss Stick Manufacturer Malaysia', 'Giant Dragon Joss Stick', 'Handmade Dragon Incense', 'Custom Dragon Joss Stick', 'Traditional Joss Stick Manufacturer', 'Dragon Joss Stick Supplier', '24 Feet Dragon Joss Stick', '21 Feet Dragon Joss Stick', 'Dragon Joss Stick for Temple', 'Tian Gong Birthday Dragon Incense', 'Nine Emperor Gods Festival Dragon Incense',
+        'Pengilang Dupa Naga Malaysia', 'Colok Naga Malaysia', 'Kilang Colok Naga Negeri Sembilan', 'Dupa Naga Besar',
+      ],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: '兴耀企业香品目录',
@@ -1171,7 +1205,13 @@ useSeoMeta({
 
 useHead(() => ({
   htmlAttrs: { lang: locale.value === 'zh' ? 'zh-Hans' : 'en' },
-  link: [{ rel: 'canonical', href: siteUrl }],
+  link: [
+    { rel: 'canonical', href: siteUrl },
+    { rel: 'alternate', hreflang: 'zh-Hans-MY', href: `${siteUrl}/` },
+    { rel: 'alternate', hreflang: 'en-MY', href: `${siteUrl}/dragon-joss-stick-manufacturer-malaysia/` },
+    { rel: 'alternate', hreflang: 'ms-MY', href: `${siteUrl}/pengilang-dupa-naga-malaysia/` },
+    { rel: 'alternate', hreflang: 'x-default', href: `${siteUrl}/` },
+  ],
   meta: [
     { name: 'author', content: '兴耀企业 Heng Yau Enterprise' },
     { property: 'og:locale:alternate', content: locale.value === 'zh' ? 'en_MY' : 'zh_MY' },

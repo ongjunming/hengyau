@@ -31,6 +31,8 @@ type SeoTranslation = {
 
 export type SeoPage = {
   path: string
+  lang?: 'zh-Hans' | 'en' | 'ms'
+  ogLocale?: string
   eyebrow: string
   title: string
   description: string
@@ -40,15 +42,27 @@ export type SeoPage = {
   sections: SeoSection[]
   faq: SeoFaq[]
   translation: SeoTranslation
+  translationLabel?: string
+  translationLang?: string
+  faqLabel?: string
+  faqHeading?: string
+  ctaLabel?: string
+  ctaHeading?: string
+  alternates?: Array<{ hreflang: string, path: string }>
 }
 
 export const guideLinks = [
-  { path: '/malaysia-dragon-incense/', nav: '龙香介绍', title: '马来西亚手工龙香制作', text: '龙香的香身结构、手工塑龙、彩绘与燃点方式。' },
-  { path: '/dragon-incense-size-guide/', nav: '尺寸指南', title: '龙香尺寸选择指南', text: '8 尺至 24 尺龙香的约略高度与适用场地。' },
-  { path: '/temple-festival-incense-customisation/', nav: '庙庆订制', title: '庙庆神诞龙香订制', text: '尺数、颜色、龙形、题字与灯饰订制须知。' },
-  { path: '/temple-incense-products/', nav: '香品目录', title: '桃香、大二伯爷香与寺庙用香', text: '桃香、大二伯爷香、龙凤喷水香与小香批发。' },
-  { path: '/festival-dragon-incense/', nav: '节庆龙香', title: '九皇爷诞、天公诞等节庆龙香', text: '常用龙香的节庆与神诞，以及订制时间安排。' },
-  { path: '/dragon-incense-price-guide/', nav: '价格参考', title: '龙香价格怎样计算？', text: '影响龙香报价的尺数、造型、数量与运输因素。' },
+  { path: '/malaysia-dragon-incense/', nav: '龙香介绍', title: '马来西亚手工龙香制作', text: '龙香的香身结构、手工塑龙、彩绘与燃点方式。', inHeader: true },
+  { path: '/dragon-incense-size-guide/', nav: '尺寸指南', title: '龙香尺寸选择指南', text: '8 尺至 24 尺龙香的约略高度与适用场地。', inHeader: true },
+  { path: '/24-feet-dragon-joss-stick/', nav: '24尺大龙香', title: '24 Feet & 21 Feet Giant Dragon Joss Stick｜24尺大型龙香', text: '21尺、22尺与24尺超高规格大龙香订制、吊装与现场要求。', inHeader: true },
+  { path: '/temple-projects/', nav: '庙宇案例', title: '马来西亚庙宇真实安装案例库｜Temple Projects', text: '朱湖龙头宫、关帝庙、三保公宝诞等全马真实龙香上架实录。', inHeader: true },
+  { path: '/dragon-joss-stick-manufacturer-malaysia/', nav: 'English', title: 'Dragon Joss Stick Manufacturer Malaysia (EN)', text: 'Official English guide to Heng Yau Enterprise — 8 ft to 24 ft handmade giant dragon joss sticks.', inHeader: true },
+  { path: '/pengilang-dupa-naga-malaysia/', nav: 'Bahasa Melayu', title: 'Pengilang Dupa Naga Malaysia (BM)', text: 'Kilang colok naga tradisional 8 hingga 24 kaki di Kampung Chuah, Port Dickson.', inHeader: true },
+  { path: '/temple-festival-incense-customisation/', nav: '庙庆订制', title: '庙庆神诞龙香订制', text: '尺数、颜色、龙形、题字与灯饰订制须知。', inHeader: false },
+  { path: '/temple-incense-products/', nav: '香品目录', title: '桃香、大二伯爷香与寺庙用香', text: '桃香、大二伯爷香、龙凤喷水香与小香批发。', inHeader: false },
+  { path: '/festival-dragon-incense/', nav: '节庆龙香', title: '九皇爷诞、天公诞等节庆龙香', text: '常用龙香的节庆与神诞，以及订制时间安排。', inHeader: false },
+  { path: '/dragon-incense-price-guide/', nav: '价格参考', title: '龙香价格怎样计算？', text: '影响龙香报价的尺数、造型、数量与运输因素。', inHeader: false },
+  { path: '/about-heng-yau/', nav: '品牌工坊', title: '兴耀企业三十余年制香历史与朱湖工坊｜About Us', text: '了解兴耀企业（Heng Yau Enterprise）在森美兰波德申朱湖区的传统制香传承与全马服务网络。', inHeader: false },
 ]
 
 const facebookUrl = 'https://www.facebook.com/profile.php?id=100043191953658'
@@ -129,7 +143,11 @@ export function renderSeoPage(page: SeoPage, siteUrl: string) {
           { '@type': 'AdministrativeArea', name: 'Perak' },
           { '@type': 'AdministrativeArea', name: 'Penang' },
         ],
-        knowsAbout: ['龙香', '龍香', '马来西亚龙香', '手工龙香', '大龙香', '高身龙香', 'LED龙香', '龙香厂家', '龙香订制', '拜天公龙香', '天公诞龙香', '九皇爷诞龙香', '桃香', '大二伯爷香', '龙凤喷水香', '小香批发'],
+        knowsAbout: [
+          '龙香', '龍香', '马来西亚龙香', '马来西亚龙香制造商', '手工龙香', '大型龙香', '大龙香', '24尺龙香', '21尺龙香', '定制龙香', '庙宇龙香', 'LED龙香', '龙香厂家', '龙香供应商', '森美兰龙香制造厂', '拜天公龙香', '天公诞龙香', '九皇爷诞龙香', '桃香', '大二伯爷香', '龙凤喷水香', '小香批发',
+          'Dragon Joss Stick Manufacturer Malaysia', 'Giant Dragon Joss Stick', 'Handmade Dragon Incense', 'Custom Dragon Joss Stick', 'Traditional Joss Stick Manufacturer', 'Dragon Joss Stick Supplier', '24 Feet Dragon Joss Stick', '21 Feet Dragon Joss Stick', 'Dragon Joss Stick for Temple', 'Tian Gong Birthday Dragon Incense', 'Nine Emperor Gods Festival Dragon Incense',
+          'Pengilang Dupa Naga Malaysia', 'Colok Naga Malaysia', 'Kilang Colok Naga Negeri Sembilan', 'Dupa Naga Besar',
+        ],
         sameAs: [facebookUrl],
       },
       {
@@ -138,7 +156,7 @@ export function renderSeoPage(page: SeoPage, siteUrl: string) {
         url: canonicalUrl,
         name: page.title,
         description: page.description,
-        inLanguage: ['zh-Hans', 'en'],
+        inLanguage: page.lang ?? 'zh-Hans',
         about: { '@id': `${siteUrl}/#organization` },
         primaryImageOfPage: {
           '@type': 'ImageObject',
@@ -150,14 +168,14 @@ export function renderSeoPage(page: SeoPage, siteUrl: string) {
         '@type': 'BreadcrumbList',
         '@id': `${canonicalUrl}#breadcrumb`,
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: '兴耀企业', item: `${siteUrl}/` },
+          { '@type': 'ListItem', position: 1, name: '兴耀企业 Heng Yau Enterprise', item: `${siteUrl}/` },
           { '@type': 'ListItem', position: 2, name: page.title, item: canonicalUrl },
         ],
       },
       {
         '@type': 'FAQPage',
         '@id': `${canonicalUrl}#faq`,
-        inLanguage: 'zh-Hans',
+        inLanguage: page.lang ?? 'zh-Hans',
         mainEntity: page.faq.map(item => ({
           '@type': 'Question',
           name: item.question,
@@ -167,9 +185,17 @@ export function renderSeoPage(page: SeoPage, siteUrl: string) {
     ],
   }
   const jsonLd = JSON.stringify(structuredData).replaceAll('<', '\\u003c')
+  const htmlLang = page.lang ?? 'zh-Hans'
+  const ogLocale = page.ogLocale ?? (htmlLang === 'en' ? 'en_MY' : htmlLang === 'ms' ? 'ms_MY' : 'zh_MY')
+  const alternates = page.alternates ?? [
+    { hreflang: 'zh-Hans-MY', path: '/' },
+    { hreflang: 'en-MY', path: '/dragon-joss-stick-manufacturer-malaysia/' },
+    { hreflang: 'ms-MY', path: '/pengilang-dupa-naga-malaysia/' },
+    { hreflang: 'x-default', path: '/' },
+  ]
 
   return `<!doctype html>
-<html lang="zh-Hans">
+<html lang="${htmlLang}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -178,6 +204,7 @@ export function renderSeoPage(page: SeoPage, siteUrl: string) {
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="author" content="兴耀企业 Heng Yau Enterprise">
   <link rel="canonical" href="${canonicalUrl}">
+  ${alternates.map(alt => `<link rel="alternate" hreflang="${alt.hreflang}" href="${siteUrl}${alt.path}">`).join('\n  ')}
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -188,7 +215,7 @@ export function renderSeoPage(page: SeoPage, siteUrl: string) {
   <meta property="og:url" content="${canonicalUrl}">
   <meta property="og:image" content="${imageUrl}">
   <meta property="og:image:alt" content="${escapeHtml(page.imageAlt)}">
-  <meta property="og:locale" content="zh_MY">
+  <meta property="og:locale" content="${ogLocale}">
   <link rel="stylesheet" href="/seo-pages.css">
   <script type="application/ld+json">${jsonLd}</script>
 </head>
@@ -199,9 +226,9 @@ export function renderSeoPage(page: SeoPage, siteUrl: string) {
       <span><strong>兴耀企业</strong><small>HENG YAU ENTERPRISE</small></span>
     </a>
     <nav aria-label="资料页导航">
-      ${guideLinks.map(link => `<a href="${link.path}"${link.path === page.path ? ' aria-current="page"' : ''}>${escapeHtml(link.nav)}</a>`).join('\n      ')}
+      ${guideLinks.filter(link => link.inHeader).map(link => `<a href="${link.path}"${link.path === page.path ? ' aria-current="page"' : ''}>${escapeHtml(link.nav)}</a>`).join('\n      ')}
     </nav>
-    <a class="guide-contact" href="${whatsappUrl}" target="_blank" rel="noopener">WhatsApp 查询</a>
+    <a class="guide-contact" href="${whatsappUrl}" target="_blank" rel="noopener">WhatsApp</a>
   </header>
 
   <main>
@@ -209,7 +236,7 @@ export function renderSeoPage(page: SeoPage, siteUrl: string) {
       <img src="${page.image}" alt="${escapeHtml(page.imageAlt)}">
       <div class="guide-hero-shade"></div>
       <div class="guide-hero-content">
-        <a class="breadcrumb" href="/">兴耀企业</a>
+        <a class="breadcrumb" href="/">兴耀企业 · Heng Yau Enterprise</a>
         <p>${escapeHtml(page.eyebrow)}</p>
         <h1>${escapeHtml(page.title)}</h1>
         <div class="guide-hero-intro">${escapeHtml(page.introduction)}</div>
@@ -218,17 +245,17 @@ export function renderSeoPage(page: SeoPage, siteUrl: string) {
 
     <article class="guide-body">
       <aside class="fact-panel" aria-label="兴耀企业资料">
-        <div><strong>30+</strong><span>三十余年制香经验</span></div>
-        <div><strong>8–24 尺</strong><span>龙香尺寸查询</span></div>
-        <div><strong>朱湖区</strong><span>Kampung Chuah, Port Dickson</span></div>
+        <div><strong>30+</strong><span>${htmlLang === 'en' ? 'Years of Traditional Craft' : htmlLang === 'ms' ? 'Tahun Pengalaman Kilang' : '三十余年制香经验'}</span></div>
+        <div><strong>8–24 FT</strong><span>${htmlLang === 'en' ? 'Giant Dragon Joss Sticks' : htmlLang === 'ms' ? 'Dupa Naga 8 hingga 24 Kaki' : '8 尺至 24 尺龙香订制'}</span></div>
+        <div><strong>Port Dickson</strong><span>Kampung Chuah, Negeri Sembilan</span></div>
       </aside>
 
       <div class="guide-content">
         ${renderSections(page.sections)}
 
         <section class="guide-faq">
-          <p class="section-label">常见问题</p>
-          <h2>查询前先了解</h2>
+          <p class="section-label">${escapeHtml(page.faqLabel ?? (htmlLang === 'en' ? 'FAQ' : htmlLang === 'ms' ? 'Soalan Lazim' : '常见问题'))}</p>
+          <h2>${escapeHtml(page.faqHeading ?? (htmlLang === 'en' ? 'Frequently Asked Questions' : htmlLang === 'ms' ? 'Soalan Sebelum Tempahan' : '查询前先了解'))}</h2>
           ${page.faq.map((item, index) => `
             <details ${index === 0 ? 'open' : ''}>
               <summary>${escapeHtml(item.question)}</summary>
@@ -238,8 +265,8 @@ export function renderSeoPage(page: SeoPage, siteUrl: string) {
         </section>
 
         <details class="english-translation">
-          <summary>Read the complete English version</summary>
-          <div lang="en">
+          <summary>${escapeHtml(page.translationLabel ?? (htmlLang === 'zh-Hans' ? 'Read the complete English version' : '阅读中文完整说明'))}</summary>
+          <div lang="${page.translationLang ?? (htmlLang === 'zh-Hans' ? 'en' : 'zh-Hans')}">
             <h2>${escapeHtml(page.translation.title)}</h2>
             <p class="translation-intro">${escapeHtml(page.translation.introduction)}</p>
             ${renderSections(page.translation.sections)}
@@ -247,10 +274,10 @@ export function renderSeoPage(page: SeoPage, siteUrl: string) {
         </details>
 
         <nav class="guide-related" aria-label="更多龙香资料">
-          <p class="section-label">更多龙香资料</p>
-          <h2>继续了解</h2>
+          <p class="section-label">${htmlLang === 'en' ? 'Explore More' : htmlLang === 'ms' ? 'Panduan Lain' : '更多龙香资料'}</p>
+          <h2>${htmlLang === 'en' ? 'Guides, Sizes & Temple Projects' : htmlLang === 'ms' ? 'Saiz, Produk & Projek Tokong' : '继续了解'}</h2>
           <ul>
-            <li class="guide-related-home"><a href="/"><strong>兴耀企业马来西亚手工龙香首页（8 尺至 24 尺完整香品目录）</strong><span>回到主站浏览 8 尺至 24 尺龙香、桃香、大二伯爷香、龙凤喷水香实物目录与工坊相册。</span></a></li>
+            <li class="guide-related-home"><a href="/"><strong>兴耀企业 Heng Yau Enterprise｜马来西亚手工龙香首页（8 尺至 24 尺完整目录）</strong><span>回到主站浏览 8 尺至 24 尺龙香、桃香、大二伯爷香、龙凤喷水香实物目录与工坊相册。</span></a></li>
             ${guideLinks.filter(link => link.path !== page.path).map(link => `<li><a href="${link.path}"><strong>${escapeHtml(link.title)}</strong><span>${escapeHtml(link.text)}</span></a></li>`).join('')}
           </ul>
         </nav>
@@ -259,15 +286,15 @@ export function renderSeoPage(page: SeoPage, siteUrl: string) {
 
     <section class="guide-cta">
       <div>
-        <p>龙香订制查询</p>
-        <h2>把场地、尺数、数量与日期发给我们。</h2>
+        <p>${escapeHtml(page.ctaLabel ?? (htmlLang === 'en' ? 'CUSTOM ENQUIRY' : htmlLang === 'ms' ? 'PERTANYAAN TEMPAHAN' : '龙香订制查询'))}</p>
+        <h2>${escapeHtml(page.ctaHeading ?? (htmlLang === 'en' ? 'Share your temple site, height, quantity and festival date.' : htmlLang === 'ms' ? 'Kongsi lokasi tokong, saiz, kuantiti dan tarikh perayaan anda.' : '把场地、尺数、数量与日期发给我们。'))}</h2>
       </div>
       <a href="${whatsappUrl}" target="_blank" rel="noopener">WhatsApp 016-363 3329</a>
     </section>
   </main>
 
   <footer class="guide-footer">
-    <div><strong>兴耀企业 Heng Yau Enterprise</strong><span>Lot 455A, Stor (SKLC A21/5), Kampung Chuah, 71960 Port Dickson, Negeri Sembilan</span></div>
+    <div><strong>兴耀企业 Heng Yau Enterprise</strong><span>Lot 455A, Stor (SKLC A21/5), Kampung Chuah, 71960 Port Dickson, Negeri Sembilan, Malaysia</span></div>
     <div><a href="mailto:sainem38@gmail.com">sainem38@gmail.com</a><a href="${facebookUrl}" target="_blank" rel="noopener">Facebook</a></div>
   </footer>
 </body>

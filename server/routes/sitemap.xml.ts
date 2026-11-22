@@ -19,30 +19,65 @@ export default defineEventHandler((event) => {
       changefreq: 'weekly',
       priority: '1.0',
       images: [
-        { loc: '/images/hero-led-night-v30.webp', title: '马来西亚兴耀企业庙庆手工彩绘亮灯高身龙香实景' },
+        { loc: '/images/hero-led-night-v30.webp', title: 'Heng Yau Enterprise Malaysia giant LED dragon joss sticks at a temple festival' },
         { loc: '/images/fb-night-led-row-v30.webp', title: '马来西亚庙庆夜间亮灯成排手工龙香｜兴耀企业' },
         { loc: '/images/fb-temple-trio-day-v30.webp', title: '马来西亚庙前安香三柱高身彩绘龙香｜兴耀企业' },
-        { loc: '/images/fb-workshop-craft-row-v30.webp', title: '森美兰波德申朱湖区兴耀制香工坊实景' },
+        { loc: '/images/fb-workshop-craft-row-v30.webp', title: 'Heng Yau traditional dragon joss stick workshop in Kampung Chuah, Port Dickson' },
         { loc: '/images/fb-festival-field-v30.webp', title: '马来西亚大型神诞庆典成排红身手工龙香｜兴耀企业' },
-        { loc: '/images/catalog-dragon-08ft-v23.webp', title: '8 尺龙香｜兴耀企业马来西亚手工龙香' },
-        { loc: '/images/catalog-dragon-12ft-v22.webp', title: '12 尺龙香｜兴耀企业马来西亚手工龙香' },
-        { loc: '/images/catalog-dragon-16ft-v22.webp', title: '16 尺龙香｜兴耀企业马来西亚手工龙香' },
-        { loc: '/images/catalog-dragon-18ft-v22.webp', title: '18 尺龙香｜兴耀企业马来西亚手工龙香' },
-        { loc: '/images/catalog-dragon-21ft-v26.webp', title: '21 尺龙香｜兴耀企业马来西亚手工龙香' },
-        { loc: '/images/catalog-dragon-22ft-v26.webp', title: '22 尺龙香｜兴耀企业马来西亚手工龙香' },
-        { loc: '/images/catalog-dragon-24ft-v26.webp', title: '24 尺龙香｜兴耀企业马来西亚手工龙香' },
-        { loc: '/images/catalog-peach-incense-v25.webp', title: '8 尺桃香｜兴耀企业寺庙用香' },
+        { loc: '/images/catalog-dragon-08ft-v23.webp', title: '8 ft handmade dragon joss stick Malaysia｜8尺龙香' },
+        { loc: '/images/catalog-dragon-12ft-v22.webp', title: '12 ft handmade dragon joss stick Malaysia｜12尺龙香' },
+        { loc: '/images/catalog-dragon-16ft-v22.webp', title: '16 ft giant dragon joss stick Malaysia｜16尺龙香' },
+        { loc: '/images/catalog-dragon-18ft-v22.webp', title: '18 ft giant dragon joss stick Malaysia｜18尺龙香' },
+        { loc: '/images/catalog-dragon-21ft-v26.webp', title: '21 feet illuminated giant dragon joss stick｜21尺亮灯龙香' },
+        { loc: '/images/catalog-dragon-22ft-v26.webp', title: '22 feet giant dragon joss stick Malaysia｜22尺龙香' },
+        { loc: '/images/catalog-dragon-24ft-v26.webp', title: 'Heng Yau 24 feet handmade dragon joss stick displayed at a Malaysian temple' },
+        { loc: '/images/catalog-peach-incense-v25.webp', title: '8尺桃香｜兴耀企业寺庙用香' },
         { loc: '/images/catalog-da-er-bo-ye-incense-v21.webp', title: '大二伯爷香｜兴耀企业寺庙用香' },
         { loc: '/images/catalog-dragon-phoenix-fountain-v21.webp', title: '龙凤喷水香｜兴耀企业大型庙庆订制' },
       ],
     },
     {
+      path: '/dragon-joss-stick-manufacturer-malaysia/',
+      changefreq: 'weekly',
+      priority: '0.95',
+      images: [
+        { loc: '/images/hero-led-night-v30.webp', title: 'Dragon Joss Stick Manufacturer Malaysia — Heng Yau Enterprise' },
+        { loc: '/images/fb-workshop-craft-row-v30.webp', title: 'Handmade giant dragon incense workshop in Kampung Chuah, Port Dickson' },
+      ],
+    },
+    {
       path: '/malaysia-dragon-incense/',
       changefreq: 'weekly',
-      priority: '0.9',
+      priority: '0.95',
       images: [
         { loc: '/images/fb-festival-field-v30.webp', title: '马来西亚兴耀企业为庙庆制作的手工彩绘龙香' },
         { loc: '/images/fb-workshop-craft-row-v30.webp', title: '兴耀企业朱湖区工坊手工龙香制作实拍' },
+      ],
+    },
+    {
+      path: '/24-feet-dragon-joss-stick/',
+      changefreq: 'weekly',
+      priority: '0.9',
+      images: [
+        { loc: '/images/catalog-dragon-24ft-v26.webp', title: 'Heng Yau 24 feet handmade dragon joss stick displayed at a Malaysian temple' },
+        { loc: '/images/catalog-dragon-21ft-v26.webp', title: '21 feet illuminated giant dragon joss stick Malaysia' },
+      ],
+    },
+    {
+      path: '/pengilang-dupa-naga-malaysia/',
+      changefreq: 'weekly',
+      priority: '0.9',
+      images: [
+        { loc: '/images/fb-temple-trio-day-v30.webp', title: 'Pengilang Dupa Naga Malaysia — Colok Naga Heng Yau Enterprise' },
+      ],
+    },
+    {
+      path: '/temple-projects/',
+      changefreq: 'weekly',
+      priority: '0.9',
+      images: [
+        { loc: '/images/fb-night-led-row-v30.webp', title: 'Real Malaysian temple dragon joss stick installations by Heng Yau Enterprise' },
+        { loc: '/images/fb-festival-field-v30.webp', title: '马来西亚神诞庙庆整排手工大龙香实景' },
       ],
     },
     {
@@ -56,7 +91,7 @@ export default defineEventHandler((event) => {
     {
       path: '/temple-festival-incense-customisation/',
       changefreq: 'monthly',
-      priority: '0.9',
+      priority: '0.85',
       images: [
         { loc: '/images/facebook-led-dragon-temple-v15.webp', title: '马来西亚庙庆现场成排点亮的兴耀企业龙香' },
       ],
@@ -64,7 +99,7 @@ export default defineEventHandler((event) => {
     {
       path: '/temple-incense-products/',
       changefreq: 'monthly',
-      priority: '0.8',
+      priority: '0.85',
       images: [
         { loc: '/images/catalog-peach-incense-v25.webp', title: '兴耀企业八尺桃香与寺庙用香目录' },
       ],
@@ -72,7 +107,7 @@ export default defineEventHandler((event) => {
     {
       path: '/festival-dragon-incense/',
       changefreq: 'monthly',
-      priority: '0.8',
+      priority: '0.85',
       images: [
         { loc: '/images/facebook-led-dragon-temple-v15.webp', title: '天公诞与九皇爷诞节庆手工龙香' },
       ],
@@ -83,6 +118,14 @@ export default defineEventHandler((event) => {
       priority: '0.8',
       images: [
         { loc: '/images/catalog-dragon-12ft-v22.webp', title: '兴耀企业十二尺手工彩绘龙香报价参考' },
+      ],
+    },
+    {
+      path: '/about-heng-yau/',
+      changefreq: 'monthly',
+      priority: '0.85',
+      images: [
+        { loc: '/images/fb-workshop-craft-row-v30.webp', title: '兴耀企业森美兰波德申朱湖区三十余年制香工坊' },
       ],
     },
   ]

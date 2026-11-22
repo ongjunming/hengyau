@@ -23,12 +23,12 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'zh-Hans' },
-      title: '马来西亚龙香厂家｜8尺至24尺手工大龙香与庙庆神诞订制｜兴耀企业',
+      title: '马来西亚龙香制造商｜8尺至24尺手工大型龙香订制｜兴耀企业 Heng Yau',
       meta: [
         {
           name: 'description',
           content:
-            '兴耀企业（Heng Yau Enterprise）扎根马来西亚森美兰波德申朱湖区三十余年，专营手工龙香、大龙香与LED亮灯龙香（8尺至24尺），提供天公诞、九皇爷诞、庙庆神诞龙香、桃香、大二伯爷香、龙凤喷水香订制与小香批发。',
+            '兴耀企业（Heng Yau Enterprise）扎根马来西亚森美兰波德申朱湖区三十余年，专业制造 8尺至24尺手工大型龙香（Giant Dragon Joss Stick）、LED亮灯龙香、桃香、大二伯爷香、龙凤喷水香与庙用小香批发，支援天公诞、九皇爷诞及全马庙宇订制。',
         },
         { name: 'theme-color', content: '#241815' },
         { name: 'color-scheme', content: 'light' },
@@ -53,10 +53,15 @@ export default defineNuxtConfig({
         '/',
         '/malaysia-dragon-incense/',
         '/dragon-incense-size-guide/',
+        '/24-feet-dragon-joss-stick/',
         '/temple-festival-incense-customisation/',
         '/temple-incense-products/',
         '/festival-dragon-incense/',
         '/dragon-incense-price-guide/',
+        '/temple-projects/',
+        '/about-heng-yau/',
+        '/dragon-joss-stick-manufacturer-malaysia/',
+        '/pengilang-dupa-naga-malaysia/',
         '/robots.txt',
         '/sitemap.xml',
         '/llms.txt',

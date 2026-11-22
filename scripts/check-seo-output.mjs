@@ -6,10 +6,15 @@ const pages = [
   { file: 'index.html', path: '/', schemaTypes: ['LocalBusiness', 'FAQPage'] },
   { file: 'malaysia-dragon-incense/index.html', path: '/malaysia-dragon-incense/', schemaTypes: ['BreadcrumbList', 'FAQPage'] },
   { file: 'dragon-incense-size-guide/index.html', path: '/dragon-incense-size-guide/', schemaTypes: ['BreadcrumbList', 'FAQPage'] },
+  { file: '24-feet-dragon-joss-stick/index.html', path: '/24-feet-dragon-joss-stick/', schemaTypes: ['BreadcrumbList', 'FAQPage'] },
   { file: 'temple-festival-incense-customisation/index.html', path: '/temple-festival-incense-customisation/', schemaTypes: ['BreadcrumbList', 'FAQPage'] },
   { file: 'temple-incense-products/index.html', path: '/temple-incense-products/', schemaTypes: ['BreadcrumbList', 'FAQPage'] },
   { file: 'festival-dragon-incense/index.html', path: '/festival-dragon-incense/', schemaTypes: ['BreadcrumbList', 'FAQPage'] },
   { file: 'dragon-incense-price-guide/index.html', path: '/dragon-incense-price-guide/', schemaTypes: ['BreadcrumbList', 'FAQPage'] },
+  { file: 'temple-projects/index.html', path: '/temple-projects/', schemaTypes: ['BreadcrumbList', 'FAQPage'] },
+  { file: 'about-heng-yau/index.html', path: '/about-heng-yau/', schemaTypes: ['BreadcrumbList', 'FAQPage'] },
+  { file: 'dragon-joss-stick-manufacturer-malaysia/index.html', path: '/dragon-joss-stick-manufacturer-malaysia/', schemaTypes: ['BreadcrumbList', 'FAQPage'] },
+  { file: 'pengilang-dupa-naga-malaysia/index.html', path: '/pengilang-dupa-naga-malaysia/', schemaTypes: ['BreadcrumbList', 'FAQPage'] },
 ]
 
 const fail = (message) => {
